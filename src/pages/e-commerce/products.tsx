@@ -949,4 +949,4 @@ const ProductsTable: FC = function () {
   );
 };
 
-export default EcommerceProductsPage;
+export {EcommerceProductsPage};

@@ -6,14 +6,15 @@ import {
   HiClipboard,
   HiCollection,
   HiInformationCircle,
-  HiLogin,
-  HiPencil,
+  // HiLogin,
+  // HiPencil,
   HiSearch,
-  HiShoppingBag,
-  HiUsers,
+  // HiShoppingBag,
+  // HiUsers,
 } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
-const ExampleSidebar: FC = function () {
+const AsideBar: FC = function () {
   const [currentPage, setCurrentPage] = useState("");
 
   useEffect(() => {
@@ -37,43 +38,29 @@ const ExampleSidebar: FC = function () {
           </form>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
-              <Sidebar.Item
-                href="/"
-                icon={HiChartPie}
-                className={
-                  "/" === currentPage ? "bg-gray-100 dark:bg-gray-700" : ""
-                }
-              >
-                Dashboard
-              </Sidebar.Item>
-              <Sidebar.Item
-                href="/e-commerce/products"
-                icon={HiShoppingBag}
-                className={
-                  "/e-commerce/products" === currentPage
-                    ? "bg-gray-100 dark:bg-gray-700"
-                    : ""
-                }
-              >
-                Products
-              </Sidebar.Item>
-              <Sidebar.Item
-                href="/users/list"
-                icon={HiUsers}
-                className={
-                  "/users/list" === currentPage
-                    ? "bg-gray-100 dark:bg-gray-700"
-                    : ""
-                }
-              >
-                Users list
-              </Sidebar.Item>
-              <Sidebar.Item href="/authentication/sign-in" icon={HiLogin}>
-                Sign in
-              </Sidebar.Item>
-              <Sidebar.Item href="/authentication/sign-up" icon={HiPencil}>
-                Sign up
-              </Sidebar.Item>
+              <Link to="/">
+                <Sidebar.Item
+                  icon={HiChartPie}
+                  className={
+                    "/" === currentPage ? "bg-gray-100 dark:bg-gray-700" : ""
+                  }
+                >
+                  Dashboard
+                </Sidebar.Item>
+              </Link>
+
+              <Link to="/welcome">
+                <Sidebar.Item
+                  icon={HiChartPie}
+                  className={
+                    "/welcome" === currentPage
+                      ? "bg-gray-100 dark:bg-gray-700"
+                      : ""
+                  }
+                >
+                  Welcome
+                </Sidebar.Item>
+              </Link>
             </Sidebar.ItemGroup>
             <Sidebar.ItemGroup>
               <Sidebar.Item
@@ -102,4 +89,4 @@ const ExampleSidebar: FC = function () {
   );
 };
 
-export default ExampleSidebar;
+export {AsideBar};
