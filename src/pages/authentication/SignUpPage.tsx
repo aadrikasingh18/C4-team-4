@@ -78,4 +78,4 @@ const SignUpPage: FC = function () {
   );
 };
 
-export default SignUpPage;
+export {SignUpPage};

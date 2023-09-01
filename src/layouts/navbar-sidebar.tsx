@@ -1,7 +1,6 @@
 import { Footer } from "flowbite-react";
 import type { FC, PropsWithChildren } from "react";
-import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
+import { Header, AsideBar } from "../components";
 import { MdFacebook } from "react-icons/md";
 import { FaDribbble, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 
@@ -10,12 +9,12 @@ interface NavbarSidebarLayoutProps {
 }
 
 const NavbarSidebarLayout: FC<PropsWithChildren<NavbarSidebarLayoutProps>> =
-  function ({ children, isFooter = true }) {
+  function ({ children, isFooter = false }) {
     return (
       <>
-        <Navbar />
+        <Header isFluid={true} />
         <div className="flex items-start pt-16">
-          <Sidebar />
+          <AsideBar />
           <MainContent isFooter={isFooter}>{children}</MainContent>
         </div>
       </>
@@ -95,7 +94,7 @@ const MainContentFooter: FC = function () {
         </div>
       </Footer>
       <p className="my-8 text-center text-sm text-gray-500 dark:text-gray-300">
-        &copy; 2019-2022 Flowbite.com. All rights reserved.
+        &copy; 2023 vRite.com All rights reserved.
       </p>
     </>
   );

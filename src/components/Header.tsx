@@ -1,16 +1,27 @@
 import type { FC } from "react";
 import { Button, DarkThemeToggle, Navbar } from "flowbite-react";
+import { Link } from "react-router-dom";
 
-const ExampleNavbar: FC = function () {
+interface HeaderProps{
+  isFluid: boolean;
+}
+
+
+const Header: FC<HeaderProps> = function ({isFluid}) {
+  
+  const navbarProps = {
+    fluid : isFluid
+  }
+
   return (
-    <Navbar fluid>
+    <Navbar {...navbarProps} >
       <div className="w-full p-3 lg:px-5 lg:pl-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Navbar.Brand href="/">
               <img alt="" src="/images/logo.svg" className="mr-3 h-6 sm:h-8" />
               <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-                Flowbite
+                vRite
               </span>
             </Navbar.Brand>
           </div>
@@ -22,10 +33,13 @@ const ExampleNavbar: FC = function () {
               width="90"
               className="hidden sm:block"
             />
-            <Button color="primary" href="https://flowbite.com/pro/">
-              Upgrade to Pro
-            </Button>
             <DarkThemeToggle />
+            <Link to="/new">
+              <Button color="primary">Create Post</Button>
+            </Link>
+            <Link to="/profile">
+              <Button color="primary">User Profile</Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -33,4 +47,4 @@ const ExampleNavbar: FC = function () {
   );
 };
 
-export default ExampleNavbar;
+export {Header};

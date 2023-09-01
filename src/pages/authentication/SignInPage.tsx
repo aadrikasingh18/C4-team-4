@@ -72,4 +72,4 @@ const SignInPage: FC = function () {
   );
 };
 
-export default SignInPage;
+export {SignInPage};

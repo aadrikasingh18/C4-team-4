@@ -182,3 +182,7 @@
 .fc .fc-daygrid-day-frame {
   @apply hover:bg-gray-50 cursor-pointer !important;
 }
+
+.home-main-section{
+  height: 90vh;
+}
