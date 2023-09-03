@@ -1,111 +1,104 @@
-<div align="center">
-  <h1>flowbite-react-admin-dashboard</h1>
-  <p>
-    Get started with a premium admin dashboard layout built with React, Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.
-  </p>
-  <p>
-    <a href="https://discord.com/invite/4eeurUVvTy">
-      <img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Flowbite on Discord" />
-    </a>
-  </p>
-</div>
-<div align="center">
-  <a href="https://flowbite-react-admin-dashboard.vercel.app/">
-    <img src="https://i.postimg.cc/3RMbsw6t/flowbite-react-admin-dashboard.png" />
-  </a>
-  <br />
-</div>
-<hr />
+# [Horizon UI TailwindCSS React ⚡️](https://horizon-ui.com/horizon-tailwind-react) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Check%20Horizon%20UI,%20the%20trendiest%20open-source%20admin%20template%20for%20%23tailwindcss%20and%20%23react!%0A%0Ahorizon-ui.com%20)
 
-**You can [copy/paste code you want from this project](#how-to-use-in-your-own-project), or [use the whole thing for your website](#how-to-install).**
+![version](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
+![license](https://img.shields.io/badge/license-MIT-blue.svg)
+[![GitHub issues open](https://img.shields.io/github/issues/horizon-ui/horizon-tailwind-react.svg?maxAge=2592000)](https://github.com/horizon-ui/horizon-tailwind-react/issues?q=is%3Aopen+is%3Aissue)
 
-## Table of Contents
+<p>&nbsp;</p>
 
-- [How to use in your own project](#how-to-use-in-your-own-project)
-- [How to install](#how-to-install)
-  - [Assumptions](#assumptions)
-- [How to develop locally](#how-to-develop-locally)
-- [How to build for production](#how-to-build-for-production)
-- [How to deploy](#how-to-deploy)
+[<img alt="Horizon UI - Tailwind CSS React Admin dashboard template" src="https://i.ibb.co/1zhBQ2J/horizon-ui-tailwind-2.png" />](https://github.com/horizon-ui/horizon-tailwind-react)
 
-## How to use in your own project
+<p>&nbsp;</p>
 
-In this case, we assume you already have a `nodejs` project with a `package.json`.
 
-You can copy any of the code from the `.tsx` files in `src/pages` to your own `nodejs` project. Some pages contain optional dependencies discussed further below. Pages might also use some of the static files found in `public`.
+Get started and build your dream web app with Horizon UI, the trendiest & innovative Open Source Admin Template for Tailwind CSS & React!
 
-Your project will need to have [`flowbite-react`](https://github.com/bacali95/flowbite-react) installed. That's it! If you're unfamiliar, see [the open-source guide on how to install `flowbite-react`](https://github.com/themesberg/flowbite-react#getting-started).
+---
 
-Optional dependencies include:
+### Introduction
 
-- [`react-icons`](https://react-icons.github.io/react-icons/) for most of the many icons used
-- [`react-apexcharts`](https://github.com/apexcharts/react-apexcharts) for charts/graphs found on [Dashboard page](https://github.com/themesberg/flowbite-react-admin-dashboard/blob/main/src/pages/index.tsx)
-- [`react-sortablejs`](https://github.com/SortableJS/react-sortablejs) for Kanban-style boards found on [Kanban page](https://github.com/themesberg/flowbite-react-admin-dashboard/blob/main/src/pages/kanban.tsx)
-- [`svgmap`](https://github.com/StephanWagner/svgMap) for maps found on [Dashboard page](https://github.com/themesberg/flowbite-react-admin-dashboard/blob/main/src/pages/kanban.tsx)
+Designed for those who like modern UI elements and beautiful websites. Made of hundred of elements, designed blocks and fully coded pages, Horizon UI is ready to help you create stunning websites and webapps.
 
-## How to install
+Save hundreds of hours trying to create and develop a dashboard from scratch.
+The fastest, most responsive & trendiest dashboard for Tailwind CSS is here. Seriously.
 
-### Assumptions
+With Horizon UI you will find many examples for pages like NFTs Pages,
+Authentication Pages, Profile and so on. Just choose between a Basic Design or a cover and you are good to go!
 
-- You can open a shell/terminal/command prompt
-- You have `git` instaslled and can run `git` in the shell
-- You have `nodejs` installed and can run `node`, `npm` in the shell
+### 🎉 [NEW] Horizon UI Components
+All the main components from both versions, this will help you to see and interact with all & the latest added components of Horizon (also, new components are on the way, stay tuned)! ⚡️
+<a href="https://horizon-ui.com/components/?ref=readme-horizon-tailwind-react" target="_blank">See all components</a>
 
-Install [`yarn`](https://yarnpkg.com/)
 
-```sh
-npm i -g yarn
+### Documentation
+
+Each element is well presented in a very complex documentation. You can read more about the <a href="https://horizon-ui.com/docs-tailwind/docs/react/installation?ref=readme-horizon-tailwind-react" target="_blank">documentation here.</a>
+
+### Quick Start
+
+Install Horizon UI by running either of the following:
+
+- Install NodeJS LTS from [NodeJs Official Page](https://nodejs.org/en/?ref=horizon-documentation) (NOTE: Product only works with LTS version).
+
+Clone the repository with the following command:
+
+```bash
+git clone https://github.com/horizon-ui/horizon-tailwind-react.git
 ```
 
-Clone this repository
+Run in terminal this command:
 
-```sh
-git clone https://github.com/themesberg/flowbite-react-admin-dashboard.git
-cd flowbite-react-admin-dashboard
+```bash
+npm install
 ```
 
-Install dependencies for this project
+Then run this command to start your local server
 
-```sh
-yarn install
+```bash
+npm start
 ```
 
-## How to develop locally
+### Example Pages
 
-Once run, this command will display a link to the local server.
+If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
 
-```sh
-yarn dev
-```
+View <a href="https://horizon-ui.com/horizon-tailwind-react/?ref=readme-horizon-tailwind-react" target="_blank">example pages here.</a>
 
-## How to build for production
+### Versions
 
-Your code won't build if you have TypeScript errors. Otherwise, the command will report how large the output files are, which should go to `dist` folder.
+| Free Version                                                                                                       | PRO Version                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| [![Horizon UI Tailwind CSS React](https://i.ibb.co/1zhBQ2J/horizon-ui-tailwind-2.png)](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-react) | [![Horizon UI Tailwind CSS React PRO](https://i.ibb.co/d0cVzKB/horizon-ui-pro-tailwind.png)](https://www.horizon-ui.com/pro?ref=readme-horizon-tailwind-react) |
 
-We use [vite](https://vitejs.dev) to build and its default behavior is to emit an `index.html`, `app.js`, and `app.css`.
+### Figma Version
 
-```sh
-yarn build
-```
+Horizon UI is available in Figma format as well! Check it out on Figma
+Community! 🎨
+[See the Horizon UI Figma design files](https://bit.ly/horizon-figma)
 
-## How to deploy
+### Reporting Issues
 
-You can deploy this repository to any hosting service from Cloudflare Pages, Vercel, or Github Pages to Heroku to AWS to your own Nginx server.
+We use GitHub Issues as the official bug tracker for the Horizon UI. Here are
+some advices for our users that want to report an issue:
 
-However, `react-router` needs your server to send all requests to `/`. This is commonly referred to as a [Single Page Application (SPA)](https://developer.mozilla.org/en-US/docs/Glossary/SPA). You will have to add a rewrite to accomplish that. To host on Vercel, for example, you just need to add a `vercel.json` with:
+1. Make sure that you are using the latest version of the Horizon UI Dashbaord.
+   Check the CHANGELOG from your dashboard on our
+   [CHANGE LOG File](https://github.com/horizon-ui/horizon-tailwind-react/blob/main/CHANGELOG.md?ref=readme-horizon-tailwind-react).
+2. Providing us reproducible steps for the issue will shorten the time it takes
+   for it to be fixed.
+3. Some issues may be browser specific, so specifying in what browser you
+   encountered the issue might help.
 
-```json
-{
-  "routes": [
-    {
-      "src": "/[^.]+",
-      "dest": "/",
-      "status": 200
-    }
-  ]
-}
-```
+---
 
-Most, but not all, providers have a mechanism to do this, but we can't cover them all here.
+### Community
 
-Alternatively, you can change this app to server-side render. `vite` isn't designed to do that, so you'll need to use a plugin to create an HTML file for each page. `vite` [has a section in their docs](https://github.com/vitejs/awesome-vite#ssr) about SSR plugins and they seem great.
+Connect with the community! Feel free to ask questions, report issues, and meet new people that already use Horizon UI!
+
+💬 [Join the #HorizonUI Discord Community!](https://discord.gg/f6tEKFBd4m)
+
+### Copyright and license
+
+⭐️ [Copyright 2023 Horizon UI ](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-react)
+
+📄 [Horizon UI License](https://www.simmmple.com/licenses?ref=readme-horizon-tailwind-react)

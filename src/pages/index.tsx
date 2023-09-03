@@ -1,5 +1,0 @@
-export {DashboardPage} from './DashboardPage'
-export {SignInPage} from './authentication/SignInPage'
-export {SignUpPage} from './authentication/SignUpPage'
-export {EcommerceProductsPage} from './e-commerce/products'
-export {HomePage} from './HomePage'
