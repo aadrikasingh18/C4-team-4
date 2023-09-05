@@ -27,3 +27,45 @@ input.defaultCheckbox::before {
 input:checked.defaultCheckbox::before { 
 	opacity: 1;
 }
+
+.texteditor .ql-editor{
+	min-height: 400px;
+	padding: 10px;
+	margin: 10px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+	background: white;
+}
+.texteditor .ql-containter.ql-snow{
+	border: none;
+	display: flex;
+	justify-content: center;
+}
+.texteditor .ql-toolbar.ql-snow{
+	display: flex;
+	justify-content: center;
+	position: sticky;
+	top: 10px;
+	z-index: 1;
+	background-color: #F3F3F3;
+	border: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+}
+
+@media print {
+  body {
+    background: none;
+  }
+
+  .texteditor .ql-editor {
+    width: 6.5in;
+    height: 9in;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    align-self: flex-start;
+  }
+
+  .texteditor .ql-toolbar.ql-snow {
+    display: none;
+  }
+}
