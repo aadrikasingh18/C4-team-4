@@ -14,7 +14,7 @@ const TaskCard = () => {
             <MdCheckCircle className="h-6 w-6 text-brand-500 dark:text-white" />
           </div>
           <h4 className="ml-4 text-xl font-bold text-navy-700 dark:text-white">
-            Tasks
+            Tasks - Week 2 (Critical Need to Work fast)
           </h4>
         </div>
         <CardMenu />
@@ -27,7 +27,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Landing Page Design
+              Text Editor Quill - Shanit
             </p>
           </div>
           <div>
@@ -39,7 +39,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Mobile App Design
+              Backend Connections and Api Functions for frontend - Dheeraj
             </p>
           </div>
           <div>
@@ -51,7 +51,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Dashboard Builder
+              Idea Repo - Dheeraj
             </p>
           </div>
           <div>
@@ -63,7 +63,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Landing Page Design
+              Profile Page UI - Silvi
             </p>
           </div>
           <div>
@@ -75,7 +75,19 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Dashboard Builder
+              Documentation Page - Aadrika
+            </p>
+          </div>
+          <div>
+            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
+          </div>
+        </div>
+
+        <div className="mt-2 flex items-center justify-between p-2">
+          <div className="flex items-center justify-center gap-2">
+            <Checkbox />
+            <p className="text-base font-bold text-navy-700 dark:text-white">
+              Email Support - SMTP - Ravi
             </p>
           </div>
           <div>

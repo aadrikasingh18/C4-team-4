@@ -1,7 +1,7 @@
 export const mockBlogData = [
   {
     id: 1,
-    title: "Blog Post 1",
+    title: "title 1",
     createdAt: "2023-09-01",
     editedAt: "2023-09-02",
     status: "published",
@@ -12,10 +12,10 @@ export const mockBlogData = [
   },
   {
     id: 2,
-    title: "Blog Post 2",
+    title: "title 2",
     createdAt: "2023-09-05",
     editedAt: null,
-    status: "draft",
+    status: "published",
     likes: 10,
     views: 500,
     comments: 5,
@@ -23,7 +23,7 @@ export const mockBlogData = [
   },
   {
     id: 3,
-    title: "Blog Post 2",
+    title: "title 3",
     createdAt: "2023-09-05",
     editedAt: null,
     status: "draft",

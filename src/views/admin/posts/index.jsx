@@ -14,8 +14,8 @@ const Posts = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
+
   const [sortBy, setSortBy] = useState("createdAt");
-  const [sortOrder, setSortOrder] = useState("desc");
 
   useEffect(() => {
     // Simulate fetching data from an API
