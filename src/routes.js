@@ -21,9 +21,12 @@ import {
   MdBookOnline,
   MdNote,
   MdNoteAdd,
+  MdSettings,
 } from "react-icons/md";
 import Posts from "views/admin/posts";
 import { BsBucket } from "react-icons/bs";
+import FaqPage from "views/admin/faq";
+// import { FaqPage } from "views/admin/faq";
 
 const routes = [
   {
@@ -68,5 +71,20 @@ const routes = [
     icon: <BsBucket className="h-6 w-6" />,
     component: <h1>Trash Page</h1>,
   },
+  {
+    name: "Settings",
+    layout: "/admin",
+    path: "settings",
+    icon: <MdSettings className="h-6 w-6" />,
+    component: <h2>settings</h2>,
+  },
+  {
+    name: "FAQ",
+    layout: "/admin",
+    path: "faq",
+    icon: <MdNoteAdd className="h-6 w-6" />,
+    component: <FaqPage />,
+  },
+
 ];
 export default routes;
