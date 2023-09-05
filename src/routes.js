@@ -2,9 +2,9 @@ import React from "react";
 
 // Admin Imports
 import MainDashboard from "views/admin/default";
-import NFTMarketplace from "views/admin/marketplace";
+
 import Profile from "views/admin/profile";
-import DataTables from "views/admin/tables";
+import NewPost from "views/admin/createPost"
 // import RTLDefault from "views/rtl/default";
 
 // Auth Imports
@@ -13,13 +13,9 @@ import SignIn from "views/auth/SignIn";
 // Icon Imports
 import {
   MdHome,
-  MdOutlineShoppingCart,
-  MdBarChart,
   MdPerson,
   MdLock,
   MdBook,
-  MdBookOnline,
-  MdNote,
   MdNoteAdd,
 } from "react-icons/md";
 import Posts from "views/admin/posts";
@@ -43,9 +39,9 @@ const routes = [
   {
     name: "Add New Post",
     layout: "/admin",
-    path: "new",
+    path: "createPost",
     icon: <MdNoteAdd className="h-6 w-6" />,
-    component: <h2 className="my-16 mx-16">add the note here</h2>,
+    component: <NewPost />,
   },
   {
     name: "Profile",
