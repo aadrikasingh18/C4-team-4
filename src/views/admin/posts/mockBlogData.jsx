@@ -1,0 +1,36 @@
+export const mockBlogData = [
+  {
+    id: 1,
+    title: "Blog Post 1",
+    createdAt: "2023-09-01",
+    editedAt: "2023-09-02",
+    status: "published",
+    likes: 50,
+    views: 1000,
+    comments: 20,
+    imageUrl: "https://via.placeholder.com/300x200",
+  },
+  {
+    id: 2,
+    title: "Blog Post 2",
+    createdAt: "2023-09-05",
+    editedAt: null,
+    status: "draft",
+    likes: 10,
+    views: 500,
+    comments: 5,
+    imageUrl: "https://via.placeholder.com/300x200",
+  },
+  {
+    id: 3,
+    title: "Blog Post 2",
+    createdAt: "2023-09-05",
+    editedAt: null,
+    status: "draft",
+    likes: 10,
+    views: 500,
+    comments: 5,
+    imageUrl: "https://via.placeholder.com/300x200",
+  },
+  // Add more mock data as needed
+];

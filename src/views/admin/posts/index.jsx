@@ -1,31 +1,26 @@
-import { useEffect, useState } from "react";
-import { apiService } from "./PostData";
-import { Card } from "./components/Card";
-import NftCard from "components/card/NftCard";
+import React, { useEffect, useState } from "react";
+import { FiSearch } from "react-icons/fi";
+import { MdGridView, MdViewList } from "react-icons/md";
 import { useSearchParams } from "react-router-dom";
-
-import React from "react";
+import { mockBlogData } from "./mockBlogData";
+import { Card } from "./Card";
+import { GridCard } from "./GridCard";
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
-
   const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [isGridView, setIsGridView] = useState(true);
 
   const [searchParams, setSearchParams] = useSearchParams();
-
   const typeFilter = searchParams.get("type");
+  const [sortBy, setSortBy] = useState("createdAt");
+  const [sortOrder, setSortOrder] = useState("desc");
 
   useEffect(() => {
-    apiService.getAllPosts().then((data) => setPosts(data));
+    // Simulate fetching data from an API
+    setFilteredData(mockBlogData);
   }, []);
-
-  useEffect(() => {
-    const newFilteredPosts = posts.filter((post) => {
-      return typeFilter ? post.status.toLowerCase() === typeFilter : post;
-    });
-
-    setFilteredData(newFilteredPosts);
-  }, [typeFilter, posts]);
 
   const handleFilterChange = (key, value) => {
     setSearchParams((prevParams) => {
@@ -38,47 +33,69 @@ const Posts = () => {
     });
   };
 
+  const toggleView = () => {
+    setIsGridView(!isGridView);
+  };
+
   return (
     <div>
-      <div className="post-filters flex gap-2">
-        <button
-          className={`${
-            typeFilter === "draft" ? "bg-blue-500" : "bg-gray-300"
-          } rounded-lg py-2 px-4`}
-          onClick={() => handleFilterChange("type", "draft")}
-        >
-          Drafts
-        </button>
-        <button
-          className={`${
-            typeFilter === "published" ? "bg-blue-500" : "bg-gray-300"
-          } rounded-lg py-2 px-4`}
-          onClick={() => handleFilterChange("type", "published")}
-        >
-          Published
-        </button>
-        <button
-          className={`${
-            typeFilter === "scheduled" ? "bg-blue-500" : "bg-gray-300"
-          } rounded-lg py-2 px-4`}
-          onClick={() => handleFilterChange("type", "scheduled")}
-        >
-          Scheduled
-        </button>
-        {typeFilter && (
+      <div className="post-filters mt-16 flex max-w-7xl justify-between gap-2">
+        <div className="relative">
+          <div className="flex h-full items-center rounded-full border-2 bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
+            <p className="pl-3 pr-2 text-xl">
+              <FiSearch className="h-4 w-4 text-gray-400 dark:text-white" />
+            </p>
+            <input
+              type="text"
+              placeholder="Search by Title"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              class="block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+            />
+          </div>
+        </div>
+
+        <div className="relative">
           <button
-            className={`rounded-lg py-2 px-4`}
-            onClick={() => handleFilterChange("type", null)}
+            className={`rounded-lg py-2 px-4 dark:text-gray-200`}
+            onClick={toggleView}
           >
-            Clear Filter
+            {isGridView ? <MdViewList /> : <MdGridView />}
           </button>
-        )}
+
+          <select
+            className="rounded-lg py-2 px-4"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="createdAt">Published Date</option>
+            <option value="likes">Likes</option>
+            <option value="views">Views</option>
+            <option value="comments">Comments</option>
+          </select>
+        </div>
       </div>
 
-      <div className="mt-4 flex max-w-7xl flex-wrap gap-4 border p-6">
-        {filteredData.map((post) => (
-          <Card key={post._id} post={post} />
-        ))}
+      <div
+        className={`mt-4 ${
+          isGridView
+            ? "flex flex-wrap justify-center gap-4 md:justify-start"
+            : "list-view"
+        }`}
+      >
+        {filteredData
+          .filter((blog) =>
+            searchTerm
+              ? blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+              : true
+          )
+          .map((blog) =>
+            isGridView ? (
+              <GridCard key={blog.id} blog={blog} />
+            ) : (
+              <Card key={blog.id} blog={blog} />
+            )
+          )}
       </div>
     </div>
   );
