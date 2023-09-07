@@ -34,13 +34,16 @@ input:checked.defaultCheckbox::before {
 	margin: 10px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
 	background: white;
+	border-radius: 10px;
 }
 .texteditor .ql-containter.ql-snow{
 	border: none;
 	display: flex;
 	justify-content: center;
+	border-radius: 10px;
 }
 .texteditor .ql-toolbar.ql-snow{
+	margin: 0 10px;
 	display: flex;
 	justify-content: center;
 	position: sticky;
@@ -49,6 +52,7 @@ input:checked.defaultCheckbox::before {
 	background-color: #F3F3F3;
 	border: none;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+	border-radius: 10px;
 }
 
 @media print {
@@ -68,4 +72,5 @@ input:checked.defaultCheckbox::before {
   .texteditor .ql-toolbar.ql-snow {
     display: none;
   }
+  
 }
