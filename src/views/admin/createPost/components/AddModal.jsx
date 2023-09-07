@@ -45,7 +45,7 @@ const AddModal = function () {
                   <textarea
                     id="postDetails"
                     name="postDetails"
-                    placeholder="e.g. Cyber security is the practice of defending computers, servers, mobile devices, electronic systems, networks, and data from malicious attacks"
+                    placeholder="e.g. This post is about Cyber security and its properties and how it defends networks and computers from malicious content."
                     rows={5}
                     className="mt-1 p-2 md:p-4 rounded-lg border-none w-full"
                   />

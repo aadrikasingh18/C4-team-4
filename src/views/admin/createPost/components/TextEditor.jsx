@@ -21,6 +21,16 @@ const TOOLBAR_OPTIONS = [
     ["image", "blockquote", "code-block"],
     ["clean"],
 ]
+const TOOLBAR_OPTIONS_1 = [
+    
+    //font size
+    [{size: ["small","large","huge",false]}],
+    [{ font: [] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }, { background: [] }],
+    //alignment 
+    [{ align: [] }],
+]
 
 const TextEditor = () => {
     // const { id: documentId } = useParams()
@@ -50,11 +60,13 @@ const TextEditor = () => {
 
         const editor = document.createElement("div");
         wrapper.append(editor);
-        const q = new Quill(editor, { theme: "snow", modules: { toolbar: TOOLBAR_OPTIONS } })
+        const q = new Quill(editor, { theme: "snow", modules: { toolbar: TOOLBAR_OPTIONS }})
+        const b = new Quill(editor, { theme: "bubble", modules: { toolbar: TOOLBAR_OPTIONS_1 }})
         setQuill(q);
+        setQuill(b);
     }, [])
     return (
-        <div className="texteditor w-full rounded-md" ref={wrapperRef}></div>
+        <div className="texteditor w-4/5 rounded-md " ref={wrapperRef}></div>
     )
 }
 
