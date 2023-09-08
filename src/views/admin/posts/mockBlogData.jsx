@@ -9,6 +9,8 @@ export const mockBlogData = [
     views: 1000,
     comments: 20,
     imageUrl: "https://via.placeholder.com/300x200",
+    details: "This post is about cybersecurity, and the process how it protects a network from malicious content.",
+    category: "cybersecurity",
   },
   {
     id: 2,
@@ -20,6 +22,8 @@ export const mockBlogData = [
     views: 500,
     comments: 5,
     imageUrl: "https://via.placeholder.com/300x200",
+    details: "This post is about cybersecurity, and the process how it protects a network from malicious content.",
+    category: "cybersecurity",
   },
   {
     id: 3,
@@ -31,6 +35,8 @@ export const mockBlogData = [
     views: 500,
     comments: 5,
     imageUrl: "https://via.placeholder.com/300x200",
+    details: "This post is about cybersecurity, and the process how it protects a network from malicious content.",
+    category: "cybersecurity",
   },
   // Add more mock data as needed
 ];

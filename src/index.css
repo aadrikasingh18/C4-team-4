@@ -29,12 +29,13 @@ input:checked.defaultCheckbox::before {
 }
 
 .texteditor .ql-editor{
-	min-height: 400px;
-	padding: 10px;
+	min-height: 500px;
+	padding: 40px;
 	margin: 10px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
 	background: white;
 	border-radius: 10px;
+	overflow: visible;
 }
 .texteditor .ql-containter.ql-snow{
 	border: none;
@@ -43,7 +44,7 @@ input:checked.defaultCheckbox::before {
 	border-radius: 10px;
 }
 .texteditor .ql-toolbar.ql-snow{
-	margin: 0 10px;
+	margin: 0 8px;
 	display: flex;
 	justify-content: center;
 	position: sticky;
@@ -54,7 +55,26 @@ input:checked.defaultCheckbox::before {
 	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
 	border-radius: 10px;
 }
-
+.ql-tooltip{
+	width: 400px;
+	margin-left: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	position: sticky;
+	top: 10px;
+	height: auto;
+	z-index: 20;
+	background-color: #000;
+	color: #FFF;
+	border: none;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
+	border-radius: 10px;
+}
+.ql-tooltip::before{
+	display: none;
+}
 @media print {
   body {
     background: none;
