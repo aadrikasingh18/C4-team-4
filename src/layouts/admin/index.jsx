@@ -84,6 +84,7 @@ export default function Admin(props) {
                   element={<Navigate to="/admin/default" replace />}
                 />
               </Routes>
+              
             </div>
             <div className="p-3">
               <Footer />

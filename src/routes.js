@@ -4,7 +4,7 @@ import React from "react";
 import MainDashboard from "views/admin/default";
 
 import Profile from "views/admin/profile";
-import NewPost from "views/admin/createPost"
+import NewPost from "views/admin/createPost";
 // import RTLDefault from "views/rtl/default";
 
 // Auth Imports
@@ -81,6 +81,5 @@ const routes = [
     icon: <MdNoteAdd className="h-6 w-6" />,
     component: <FaqPage />,
   },
-
 ];
 export default routes;
