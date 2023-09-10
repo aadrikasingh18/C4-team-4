@@ -39,32 +39,32 @@ const Posts = () => {
 
   return (
     <div>
-      <div className="post-filters mt-16 flex max-w-7xl justify-between gap-2">
-        <div className="relative">
-          <div className="flex h-full items-center rounded-full border-2 bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
-            <p className="pl-3 pr-2 text-xl">
-              <FiSearch className="h-4 w-4 text-gray-400 dark:text-white" />
-            </p>
+      <div className="post-filters flex justify-between items-center  mt-16  max-w-7xl  gap-2">
+        <div className="">
+          <div className="flex h-12 items-center rounded-3xl md:rounded-full border-2 bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
+            <div className="pl-3 pr-2 text-xl">
+              <FiSearch className="text-xs md:text-lg text-gray-400 dark:text-white" />
+            </div>
             <input
               type="text"
               placeholder="Search by Title"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              class="block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+              class="block h-full w-full rounded-full bg-lightPrimary text-xs md:text-base font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
             />
           </div>
         </div>
 
-        <div className="relative">
+        <div className="flex items-center">
           <button
-            className={`rounded-lg py-2 px-4 dark:text-gray-200`}
+            className={`rounded-lg pr-2 sm:p-4 dark:text-gray-200`}
             onClick={toggleView}
           >
             {isGridView ? <MdViewList /> : <MdGridView />}
           </button>
 
           <select
-            className="rounded-lg py-2 px-4"
+            className="rounded-lg p-2 text-xs md:text-base h-10 "
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
