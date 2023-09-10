@@ -1,105 +1,80 @@
-# [Horizon UI TailwindCSS React ⚡️](https://horizon-ui.com/horizon-tailwind-react) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Check%20Horizon%20UI,%20the%20trendiest%20open-source%20admin%20template%20for%20%23tailwindcss%20and%20%23react!%0A%0Ahorizon-ui.com%20)
+# Writing Content Management System Readme
 
-![version](https://img.shields.io/badge/version-1.0.1-brightgreen.svg)
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![GitHub issues open](https://img.shields.io/github/issues/horizon-ui/horizon-tailwind-react.svg?maxAge=2592000)](https://github.com/horizon-ui/horizon-tailwind-react/issues?q=is%3Aopen+is%3Aissue)
+## Table of Contents
 
-<p>&nbsp;</p>
+1. [Introduction](#introduction)
+2. [Features](#features)
+    - [1. Dashboard](#dashboard)
+    - [2. Real-Time Collaboration](#real-time-collaboration)
+    - [3. Text Editor](#text-editor)
+    - [4. Draft Management](#draft-management)
+    - [5. Idea Repository](#idea-repository)
+    - [6. User Profile](#user-profile)
+3. [Getting Started](#getting-started)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
 
-[<img alt="Horizon UI - Tailwind CSS React Admin dashboard template" src="https://i.ibb.co/1zhBQ2J/horizon-ui-tailwind-2.png" />](https://github.com/horizon-ui/horizon-tailwind-react)
+## 1. Introduction
 
-<p>&nbsp;</p>
+Welcome to the Writing Content Management System (WCMS) documentation! This system is designed to help writers and content creators manage their writing projects efficiently. It offers a range of features to streamline your writing workflow, from drafting to publication.
+
+## 2. Features
+
+### 1. Dashboard
+
+The WCMS dashboard is your central hub for managing all your writing projects. It provides a clear overview of your drafts, published content, and more. You can easily navigate to different sections of the system from here.
+
+### 2. Real-Time Collaboration
+
+Our real-time collaboration feature allows multiple users to work on the same document simultaneously. Whether you're co-writing an article or seeking feedback from a colleague, this feature makes collaboration seamless.
+
+### 3. Text Editor
+
+The text editor comes equipped with basic editing tools to help you format and style your content. It also includes an autosave function to prevent data loss and ensure your work is always safe and up to date.
+
+### 4. Draft Management
+
+Effortlessly organize your drafts with our draft management category. You can categorize, tag, and sort your drafts for easy access and tracking of your progress.
+
+### 5. Idea Repository
+
+The idea repository is a space to store and nurture your ideas for future writing projects. Whenever inspiration strikes, jot down your ideas here, so you never run out of creative fuel.
+
+### 6. User Profile
+
+Your user profile is your personal space to showcase your writing expertise. You can upload your resume, link to other sites where your work is published, and provide additional information to enhance your online presence.
+
+## 3. Getting Started
+
+To get started with the Writing Content Management System, follow these steps:
+
+1. **Installation**: [Insert installation instructions here, if applicable.]
+
+2. **User Registration**: Create an account to access all the features of WCMS.
+
+3. **Login**: After registration, log in to your account using your credentials.
+
+4. **Explore**: Navigate through the dashboard to access the various features of the system.
+
+## 4. Usage
+
+Once you're logged in, you can start using the WCMS features according to your needs. Here are some common tasks:
+
+- **Creating a Draft**: Click on "Create New Draft" to start a new writing project.
+
+- **Real-Time Collaboration**: Invite collaborators by sharing the document link. Collaborators can edit the document in real-time.
+
+- **Text Editing**: Use the text editor to write, format, and edit your content.
+
+- **Draft Management**: Organize and categorize your drafts for better organization.
+
+- **Idea Repository**: Store your writing ideas in the repository for future reference.
+
+- **User Profile**: Customize your user profile to showcase your writing portfolio.
+
+## 5. Contributing
+
+We welcome contributions from the community to enhance the WCMS. If you have ideas for improvements, find bugs, or want to contribute code, please check out our [Contribution Guidelines](CONTRIBUTING.md) for more information.
 
 
-Get started and build your dream web app with Horizon UI, the trendiest & innovative Open Source Admin Template for Tailwind CSS & React!
-
----
-
-### Introduction
-
-Designed for those who like modern UI elements and beautiful websites. Made of hundred of elements, designed blocks and fully coded pages, Horizon UI is ready to help you create stunning websites and webapps.
-
-Save hundreds of hours trying to create and develop a dashboard from scratch.
-The fastest, most responsive & trendiest dashboard for Tailwind CSS is here. Seriously.
-
-With Horizon UI you will find many examples for pages like NFTs Pages,
-Authentication Pages, Profile and so on. Just choose between a Basic Design or a cover and you are good to go!
-
-### 🎉 [NEW] Horizon UI Components
-All the main components from both versions, this will help you to see and interact with all & the latest added components of Horizon (also, new components are on the way, stay tuned)! ⚡️
-<a href="https://horizon-ui.com/components/?ref=readme-horizon-tailwind-react" target="_blank">See all components</a>
-
-
-### Documentation
-
-Each element is well presented in a very complex documentation. You can read more about the <a href="https://horizon-ui.com/docs-tailwind/docs/react/installation?ref=readme-horizon-tailwind-react" target="_blank">documentation here.</a>
-
-### Quick Start
-
-Install Horizon UI by running either of the following:
-
-- Install NodeJS LTS from [NodeJs Official Page](https://nodejs.org/en/?ref=horizon-documentation) (NOTE: Product only works with LTS version).
-
-Clone the repository with the following command:
-
-```bash
-git clone https://github.com/horizon-ui/horizon-tailwind-react.git
-```
-
-Run in terminal this command:
-
-```bash
-npm install
-```
-
-Then run this command to start your local server
-
-```bash
-npm start
-```
-
-### Example Pages
-
-If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
-
-View <a href="https://horizon-ui.com/horizon-tailwind-react/?ref=readme-horizon-tailwind-react" target="_blank">example pages here.</a>
-
-### Versions
-
-| Free Version                                                                                                       | PRO Version                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| [![Horizon UI Tailwind CSS React](https://i.ibb.co/1zhBQ2J/horizon-ui-tailwind-2.png)](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-react) | [![Horizon UI Tailwind CSS React PRO](https://i.ibb.co/d0cVzKB/horizon-ui-pro-tailwind.png)](https://www.horizon-ui.com/pro?ref=readme-horizon-tailwind-react) |
-
-### Figma Version
-
-Horizon UI is available in Figma format as well! Check it out on Figma
-Community! 🎨
-[See the Horizon UI Figma design files](https://bit.ly/horizon-figma)
-
-### Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Horizon UI. Here are
-some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Horizon UI Dashbaord.
-   Check the CHANGELOG from your dashboard on our
-   [CHANGE LOG File](https://github.com/horizon-ui/horizon-tailwind-react/blob/main/CHANGELOG.md?ref=readme-horizon-tailwind-react).
-2. Providing us reproducible steps for the issue will shorten the time it takes
-   for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you
-   encountered the issue might help.
-
----
-
-### Community
-
-Connect with the community! Feel free to ask questions, report issues, and meet new people that already use Horizon UI!
-
-💬 [Join the #HorizonUI Discord Community!](https://discord.gg/f6tEKFBd4m)
-
-### Copyright and license
-
-⭐️ [Copyright 2023 Horizon UI ](https://www.horizon-ui.com/?ref=readme-horizon-tailwind-react)
-
-📄 [Horizon UI License](https://www.simmmple.com/licenses?ref=readme-horizon-tailwind-react)
-
+If you have any questions or need assistance, please reach out to our support team at [cohortteam04@gmail.com](mailto:cohortteam04@gmail.com). Happy writing!
