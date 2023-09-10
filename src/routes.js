@@ -21,10 +21,11 @@ import {
   MdSettings,
 } from "react-icons/md";
 import Posts from "views/admin/posts";
-import { BsBucket } from "react-icons/bs";
+import { BsBucket, BsPatchQuestionFill } from "react-icons/bs";
 import FaqPage from "views/admin/faq";
 import ErrorPage from "views/error";
 import Support  from "views/admin/emailSupport/Support";
+import { RiMailSettingsLine } from "react-icons/ri";
 // import { FaqPage } from "views/admin/faq";
 
 const routes = [
@@ -88,7 +89,7 @@ const routes = [
     name: "FAQ",
     layout: "/admin",
     path: "faq",
-    icon: <MdNoteAdd className="h-6 w-6" />,
+    icon: <BsPatchQuestionFill className="h-6 w-6" />,
     component: <FaqPage />,
   },
   {
@@ -102,7 +103,7 @@ const routes = [
     name: "Email Support",
     layout: "/admin",
     path: "support",
-    icon: <MdNoteAdd className="h-6 w-6" />,
+    icon: <RiMailSettingsLine className="h-6 w-6" />,
     component: <Support />,
   },
 

@@ -30,59 +30,59 @@ const Support = () => {
   };
 
   return (
-    <div className="flex justify-center items-center ">
-      <div class="w-full max-w-xs">
-        <form class="mb-4 rounded bg-white px-8 pt-6 pb-8 shadow-md">
-          <div class="mb-4">
-            <label class="mb-2 block text-sm font-bold text-gray-700" for="name">
+    <div className="flex justify-center items-center mt-10">
+      <div className="w-full max-w-sm">
+        <form className="flex justify-center flex-col text-sm md:text-base items-center mt-5 p-6 text-white dark:text-[#000] h-auto z-10 bg-lightPrimary dark:bg-navy-600 rounded-xl font-bold mb-4 shadow-gray-700 dark:shadow-navy-300 shadow-inset">
+          <div className=" w-full">
+            <label className="mb-2 block text-sm font-bold text-gray-600 " for="name">
               Name
             </label>
             <input
-              class="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+              className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow outline-none dark:bg-navy-900"
               id="username"
               type="text"
               placeholder="Name"
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div class="mb-6">
-            <label class="mb-2 block text-sm font-bold text-gray-700" for="email">
+          <div className="my-5 w-full">
+            <label className="mb-2 block text-sm font-bold text-gray-600" for="email">
               Email
             </label>
             <input
-              class="focus:shadow-outline mb-3 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+              className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow outline-none dark:bg-navy-900"
               id="email"
               type="email"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            {/* <p class="text-red-500 text-xs italic">Email</p> */}
+            {/* <p className="text-red-500 text-xs italic">Email</p> */}
           </div>
-          <div class="mb-6">
+          <div className="mb-5 w-full">
             <label
-              class="mb-2 block text-sm font-bold text-gray-700"
+              className="mb-2 block text-sm font-bold text-gray-600"
               for="message"
             >
               Message
             </label>
             <textarea
-              class="focus:shadow-outline mb-3 w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+              className=" w-full h-32 appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow outline-none dark:bg-navy-900"
               id="message"
               type="text-area"
               placeholder="Message"
               onChange={(e) => setMessage(e.target.value)}
             />
-            {/* <p class="text-red-500 text-xs italic">Message</p> */}
+            {/* <p className="text-red-500 text-xs italic">Message</p> */}
           </div>
-          <div class="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <button
-              class="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
+              className="flex items-center justify-between text-white dark:text-[#000] px-4 py-2 w-auto h-10 bg-blueSecondary dark:bg-brandLinear rounded-lg font-bold"
               type="button"
               onClick={handleSubmit}
             >
               Support
             </button>
-            {/* <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+            {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Forgot Password?
         </a> */}
           </div>
