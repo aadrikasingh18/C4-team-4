@@ -12,13 +12,9 @@ const SignUp = () => {
     const [confirmPassword , setConfirmPassword] = useState('');
     const [error , setError] = useState('');
     const navigate = useNavigate();
-    // useEffect(() => {
-    //   console.log(email, password)
-    // }, [email, password]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log(email,password,confirmPassword);
         if(!email || !password || !confirmPassword){
           setError('Please fill all the fields');
           console.log('Please fill all the fields');
@@ -41,7 +37,6 @@ const SignUp = () => {
           navigate('/');
         })
         .catch((error) => {
-          // setError(error.message);
           console.log(error);
         })
     }
