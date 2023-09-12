@@ -1,45 +1,50 @@
-import { useState } from 'react'
+import { useState } from "react";
 import InputField from "./../../components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "./../../components/checkbox/index";
-import { Link , useNavigate} from 'react-router-dom';
-import { createUserWithEmailAndPassword , updateProfile } from "firebase/auth";
-import { auth } from "./Firebase";
+import { Link, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { auth } from "firebase-config/firebase-config";
+import { useAuth } from "contexts/AuthContext";
 
 const SignUp = () => {
-    const [email , setEmail] = useState('');
-    const [password , setPassword] = useState('');
-    const [confirmPassword , setConfirmPassword] = useState('');
-    const [error , setError] = useState('');
-    const navigate = useNavigate();
+  const { signUp, signUpWithGoogle } = useAuth();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if(!email || !password || !confirmPassword){
-          setError('Please fill all the fields');
-          console.log('Please fill all the fields');
-          return;
-        }
-        if(password !== confirmPassword){
-          setError('Password not matched');
-          console.log('Password not matched');
-          return;
-        }
-        setError('');
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(async (response) => { 
-          const user = response.user;
-          if(user){
-            await updateProfile(user, {
-              displayName: email.split('@')[0]
-            })
-          }
-          navigate('/');
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignup = async () => {
+    try {
+      setError("");
+      const user = await signUp(email, password);
+
+      console.log("manual signup data", user);
+
+      if (user) {
+        await updateProfile(user, {
+          displayName: email.split("@")[0],
+        });
+      }
+
+      navigate("/admin");
+    } catch (error) {
+      setError(error.message);
+      console.log("error");
     }
+  };
+
+  const handleSignUpWithGoogle = async () => {
+    try {
+      await signUpWithGoogle();
+      navigate("/admin");
+    } catch (error) {
+      console.error("Error signing up with Google:", error);
+    }
+  };
+
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}
@@ -54,9 +59,16 @@ const SignUp = () => {
           <div className="rounded-full text-xl">
             <FcGoogle />
           </div>
-          <h5 className="text-sm font-medium text-navy-700 dark:text-white">
+          {/* <h5 className="text-sm font-medium text-navy-700 dark:text-white">
             Sign Up with Google
-          </h5>
+          </h5> */}
+
+          <button
+            className="text-sm font-medium text-navy-700 dark:text-white"
+            onClick={handleSignUpWithGoogle}
+          >
+            Google Sign Up
+          </button>
         </div>
         <div className="mb-6 flex items-center  gap-3">
           <div className="h-px w-full bg-gray-200 dark:bg-navy-700" />
@@ -91,7 +103,7 @@ const SignUp = () => {
           placeholder="Min. 8 characters"
           id="cpassword"
           type="password"
-          setField = {setConfirmPassword}
+          setField={setConfirmPassword}
         />
         {/* Checkbox */}
         <div className="mb-4 flex items-center justify-between px-2">
@@ -108,8 +120,10 @@ const SignUp = () => {
             Forgot Password?
           </a> */}
         </div>
-        <button className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
-        onClick={handleSubmit} >
+        <button
+          className="linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200"
+          onClick={handleSignup}
+        >
           Sign Up
         </button>
         <div className="mt-4">
@@ -122,15 +136,16 @@ const SignUp = () => {
           >
             Sign In
           </a> */}
-          <Link  
-            to = "/auth/sign-in" 
-            className="ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white">
-              Sign In
+          <Link
+            to="/auth/sign-in"
+            className="ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white"
+          >
+            Sign In
           </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SignUp;

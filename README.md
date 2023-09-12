@@ -2,17 +2,19 @@
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Features](#features)
-    - [1. Dashboard](#dashboard)
-    - [2. Real-Time Collaboration](#real-time-collaboration)
-    - [3. Text Editor](#text-editor)
-    - [4. Draft Management](#draft-management)
-    - [5. Idea Repository](#idea-repository)
-    - [6. User Profile](#user-profile)
-3. [Getting Started](#getting-started)
-4. [Usage](#usage)
-5. [Contributing](#contributing)
+- [Writing Content Management System Readme](#writing-content-management-system-readme)
+  - [Table of Contents](#table-of-contents)
+  - [1. Introduction](#1-introduction)
+  - [2. Features](#2-features)
+    - [1. Dashboard](#1-dashboard)
+    - [2. Real-Time Collaboration](#2-real-time-collaboration)
+    - [3. Text Editor](#3-text-editor)
+    - [4. Draft Management](#4-draft-management)
+    - [5. Idea Repository](#5-idea-repository)
+    - [6. User Profile](#6-user-profile)
+  - [3. Getting Started](#3-getting-started)
+  - [4. Usage](#4-usage)
+  - [5. Contributing](#5-contributing)
 
 ## 1. Introduction
 

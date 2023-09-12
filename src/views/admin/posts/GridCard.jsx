@@ -1,33 +1,31 @@
 import React from "react";
-import {BiBookOpen} from 'react-icons/bi'
-import {AiOutlineDelete} from 'react-icons/ai'
+import { BiBookOpen } from "react-icons/bi";
+import { AiOutlineDelete } from "react-icons/ai";
 
-export const GridCard = ({ blog }) => (
-  <div className="w-80 h-80 overflow-hidden bg-white dark:bg-navy-800 border-2 dark:border-navy-500 shadow-md rounded-xl">
+export const GridCard = ({ post }) => (
+  <div className="w-80 overflow-hidden bg-white shadow-md sm:rounded-lg">
     <img
-      src={blog.imageUrl}
-      alt={blog.title}
-      className="h-36 w-full object-cover"
+      src={post.imageUrl}
+      alt={post.title}
+      className="h-32 w-full object-cover"
     />
-    <div className="flex items-center justify-between p-4">
-      <div className="flex flex-col w-full ">
-        <h3 className="text-lg font-medium dark:text-gray-400">{blog.title}</h3>
+    <div className="flex items-center justify-between px-2 py-1 sm:p-6">
+      <div>
+        <h3 className="text-lg font-medium text-gray-900">{post.title}</h3>
         <div className="mt-1 text-sm text-gray-500">
-          <div className="text-blueSecondary dark:text-brandLinear font-bold ">
-            Published At: {blog.createdAt}
+          <div className="font-bold text-blueSecondary dark:text-brandLinear ">
+            Published At: {post.createdAt}
           </div>
-          <div className="mt-2 w-11/12">
-            Details: {blog.details}
-          </div>
+          <div className="mt-2">Details: {post.details}</div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 ">
-        <button className="flex items-center justify-between text-white dark:text-[#000] p-2 w-16 h-8 text-xs bg-blueSecondary dark:bg-brandLinear rounded-lg font-bold">
-          <BiBookOpen className="text-sm  " /> 
+      <div className="flex flex-col items-center justify-center">
+        <button className="flex h-8 w-16 items-center justify-between rounded-lg bg-blueSecondary p-2 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000]">
+          <BiBookOpen className="text-sm  " />
           Open
         </button>
-        <button className="flex items-center justify-between text-white dark:text-[#000] p-2 w-auto h-8 text-xs bg-blueSecondary dark:bg-brandLinear rounded-lg font-bold mt-4">
-          <AiOutlineDelete className="text-sm " /> 
+        <button className="mt-4 flex h-8 w-auto items-center justify-between rounded-lg bg-blueSecondary p-2 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000]">
+          <AiOutlineDelete className="text-sm " />
           Delete
         </button>
       </div>
