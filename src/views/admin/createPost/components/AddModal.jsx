@@ -8,9 +8,9 @@ const AddModal = function () {
 
   return (
     <div className="mx-3 ">
-      <button className="flex items-center justify-between text-white dark:text-[#000] px-4 py-2 w-36 h-10 bg-blueSecondary dark:bg-brandLinear rounded-lg font-bold" onClick={() => setOpen(!isOpen)}>
-        {isOpen ? <FaTimes className="text-sm  " /> : <FaSave className="text-sm" /> }
-        {isOpen ? "Close Modal" : "Save Draft"}
+      <button className="flex items-center justify-between text-white dark:text-[#000] px-4 py-2 w-auto h-10 bg-blueSecondary dark:bg-brandLinear rounded-lg font-bold" onClick={() => setOpen(!isOpen)}>
+        {isOpen ? <FaTimes className="text-sm mr-2 " /> : <FaSave className="text-sm mr-2 " /> }
+        {isOpen ? "Close" : "Publish"}
       </button>
       {isOpen && (
         <div className="flex justify-center flex-col text-sm md:text-base items-center mt-5 p-3 modal text-white dark:text-[#000] w-4/5 md:w-1/2 h-auto z-10 absolute bg-blueSecondary dark:bg-brandLinear rounded-lg font-bold" onClose={() => setOpen(false)} show={isOpen}>
@@ -69,9 +69,9 @@ const AddModal = function () {
                 </div>
             </form>
           </div>
-          <div className="modal_footer">
+          <div className="modal_footer my-5">
             <button color="primary" onClick={() => setOpen(false)}>
-              Save Post
+              Publish
             </button>
           </div>
         </div>

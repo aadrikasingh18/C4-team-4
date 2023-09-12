@@ -1,7 +1,8 @@
 import { deletePost } from "firebase-config";
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
-import { BiBookOpen } from "react-icons/bi";
+import { BiBookOpen, BiCommentDetail, BiLike } from "react-icons/bi";
+import { BsEye} from "react-icons/bs";
 
 export const Card = ({ post }, postId) => (
   <div className="my-4 max-w-7xl overflow-hidden bg-white shadow-md sm:rounded-lg">

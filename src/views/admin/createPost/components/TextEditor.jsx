@@ -66,7 +66,7 @@ const TextEditor = () => {
         setQuill(b);
     }, [])
     return (
-        <div className="texteditor w-4/5 rounded-md " ref={wrapperRef}></div>
+        <div className="texteditor w-full rounded-md p-2" ref={wrapperRef}></div>
     )
 }
 

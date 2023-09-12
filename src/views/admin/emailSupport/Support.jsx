@@ -63,6 +63,7 @@ const Support = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             {/* <p className="text-red-500 text-xs italic">Email</p> */}
+            {/* <p className="text-red-500 text-xs italic">Email</p> */}
           </div>
           <div className="mb-6">
             <label
@@ -79,18 +80,22 @@ const Support = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
             {/* <p className="text-red-500 text-xs italic">Message</p> */}
+            {/* <p className="text-red-500 text-xs italic">Message</p> */}
           </div>
           <div className="flex items-center justify-between">
-            <button
-              className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
-              type="button"
-              onClick={handleSubmit}
-            >
-              Support
-            </button>
+            <div className="flex items-center justify-between">
+              <button
+                className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
+                type="button"
+                onClick={handleSubmit}
+              >
+                Support
+              </button>
+              {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
             {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Forgot Password?
         </a> */}
+            </div>
           </div>
         </form>
       </div>

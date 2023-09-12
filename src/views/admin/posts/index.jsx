@@ -101,16 +101,16 @@ const Posts = () => {
           </div>
         </div>
 
-        <div className="relative">
+        <div className="flex items-center">
           <button
-            className={`rounded-lg py-2 px-4 dark:text-gray-200`}
+            className={`rounded-lg pr-2 sm:p-4 dark:text-gray-200`}
             onClick={toggleView}
           >
             {isGridView ? <MdViewList /> : <MdGridView />}
           </button>
 
           <select
-            className="rounded-lg py-2 px-4"
+            className="rounded-lg p-2 text-xs md:text-base h-10 "
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
