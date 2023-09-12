@@ -1,6 +1,15 @@
 // src/contexts/AuthContext.js
+import { auth, provider } from "firebase-config/firebase-config";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../firebase/firebase-config";
 
 const AuthContext = React.createContext();
 
@@ -9,31 +18,59 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+    return localStorage.getItem("currentUser")
+      ? JSON.parse(localStorage.getItem("currentUser"))
+      : null;
+  });
 
   // Sign-up function
-  function signUp(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+  async function signUp(email, password) {
+    console.log(email, password);
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = await response.user;
+    return user;
   }
 
   // Sign-in function
   function signIn(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   // Sign-out function
-  function signOut() {
-    return auth.signOut();
+  function logOut() {
+    return signOut(auth);
   }
 
   // Password reset function
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email);
+    return sendPasswordResetEmail(auth, email);
+  }
+
+  async function signUpWithGoogle() {
+    try {
+      const result = await signInWithPopup(auth, provider);
+
+      console.log("Signed up with google:", result.user);
+    } catch (error) {
+      console.error("error signing up with google", error);
+      throw error;
+    }
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+
+      if (user) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
+      } else {
+        localStorage.removeItem("currentUser");
+      }
     });
 
     return unsubscribe;
@@ -43,8 +80,9 @@ export function AuthProvider({ children }) {
     currentUser,
     signUp,
     signIn,
-    signOut,
     resetPassword,
+    logOut,
+    signUpWithGoogle,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

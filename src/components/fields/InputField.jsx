@@ -1,8 +1,8 @@
 // Custom components
-import React from "react";
+import React, {useState} from "react";
 
 function InputField(props) {
-  const { label, id, extra, type, placeholder, variant, state, disabled } =
+  const { label, id, extra, type, placeholder, variant, state, disabled, setField } =
     props;
 
   return (
@@ -20,6 +20,7 @@ function InputField(props) {
         type={type}
         id={id}
         placeholder={placeholder}
+        onChange={(e) => setField(e.target.value)}
         className={`mt-2 flex h-12 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none ${
           disabled === true
             ? "!border-none !bg-gray-100 dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]"

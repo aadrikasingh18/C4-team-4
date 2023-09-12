@@ -29,12 +29,11 @@ export const getAllPosts = async () => {
   }
 };
 
-export const createPost = async (title, content) => {
+export const createPost = async (...rest) => {
   try {
     const postRef = collection(db, "posts");
     const newPost = {
-      title,
-      content,
+      ...rest,
       createdAt: new Date(),
     };
     const docRef = await addDoc(postRef, newPost);

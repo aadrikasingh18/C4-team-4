@@ -9,6 +9,7 @@ import NewPost from "views/admin/createPost";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
+import SignUp from "views/auth/SignUp";
 
 // Icon Imports
 import {
@@ -22,6 +23,7 @@ import {
 import Posts from "views/admin/posts";
 import { BsBucket } from "react-icons/bs";
 import FaqPage from "views/admin/faq";
+import Support  from "views/admin/emailSupport/Support";
 // import { FaqPage } from "views/admin/faq";
 
 const routes = [
@@ -54,13 +56,6 @@ const routes = [
     component: <Profile />,
   },
   {
-    name: "Sign In",
-    layout: "/auth",
-    path: "sign-in",
-    icon: <MdLock className="h-6 w-6" />,
-    component: <SignIn />,
-  },
-  {
     name: "Trash",
     layout: "/admin",
     path: "trash",
@@ -81,5 +76,13 @@ const routes = [
     icon: <MdNoteAdd className="h-6 w-6" />,
     component: <FaqPage />,
   },
+  {
+    name: "Email Support",
+    layout: "/admin",
+    path: "support",
+    icon: <MdNoteAdd className="h-6 w-6" />,
+    component: <Support />,
+  },
+
 ];
 export default routes;

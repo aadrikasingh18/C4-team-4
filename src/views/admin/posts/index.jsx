@@ -6,11 +6,34 @@ import { mockBlogData } from "./mockBlogData";
 import { Card } from "./Card";
 import { GridCard } from "./GridCard";
 
-import { getAllPosts, createPost } from "../../../firebase";
+import { getAllPosts, createPost } from "firebase-config";
+
+const useFetch = () => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    getAllPosts()
+      .then((posts) => {
+        setData(posts);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, []);
+
+  return { data, loading, error };
+};
 
 const Posts = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const { data: posts } = useFetch();
+
+  console.log(posts);
+
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -41,9 +64,9 @@ const Posts = () => {
     setIsGridView(!isGridView);
   };
 
-  const handleCreatePost = async () => {
+  const handleCreatePost = async (postData) => {
     try {
-      const postId = await createPost(title, content);
+      const postId = await createPost(postData);
       console.log(`Blog post created with ID: ${postId}`);
       // Reset input fields or navigate to a different page
     } catch (error) {
@@ -52,26 +75,18 @@ const Posts = () => {
     }
   };
 
+  const createData = () => {
+    mockBlogData.forEach((mock) => {
+      createPost(mock);
+    });
+  };
+
   return (
     <div>
-      <div className="post-filters mt-16 flex max-w-7xl justify-between gap-2">
-        <div>
-        
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <textarea
-            placeholder="Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-          <button onClick={handleCreatePost}>Create Post</button>
-        </div>
+      <button onClick={createData}>Pass Mock Data to firebase</button>
 
-        {/* <div className="relative">
+      <div className="post-filters mt-16 flex max-w-7xl justify-between gap-2">
+        <div className="relative">
           <div className="flex h-full items-center rounded-full border-2 bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
             <p className="pl-3 pr-2 text-xl">
               <FiSearch className="h-4 w-4 text-gray-400 dark:text-white" />
@@ -81,12 +96,12 @@ const Posts = () => {
               placeholder="Search by Title"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              class="block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+              className="block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
             />
           </div>
-        </div> */}
+        </div>
 
-        {/* <div className="relative">
+        <div className="relative">
           <button
             className={`rounded-lg py-2 px-4 dark:text-gray-200`}
             onClick={toggleView}
@@ -104,30 +119,24 @@ const Posts = () => {
             <option value="views">Views</option>
             <option value="comments">Comments</option>
           </select>
-        </div> */}
+        </div>
       </div>
 
-      {/* <div
+      <div
         className={`mt-4 ${
           isGridView
             ? "flex flex-wrap justify-center gap-4 md:justify-start"
             : "list-view"
         }`}
       >
-        {filteredData
-          .filter((blog) =>
-            searchTerm
-              ? blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-              : true
-          )
-          .map((blog) =>
-            isGridView ? (
-              <GridCard key={blog.id} blog={blog} />
-            ) : (
-              <Card key={blog.id} blog={blog} />
-            )
-          )}
-      </div> */}
+        {posts.map((post) => {
+          return isGridView ? (
+            <GridCard key={post.id} post={post[0]} />
+          ) : (
+            <Card key={post.id} postId={post.id} post={post[0]} />
+          );
+        })}
+      </div>
     </div>
   );
 };
