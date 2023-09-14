@@ -5,8 +5,6 @@ const ProtectedLayout = () => {
   const { currentUser } = useAuth();
   const location = useLocation();
 
-  console.log("current user name", currentUser && currentUser.displayName);
-
   if (!currentUser) {
     return (
       <Navigate

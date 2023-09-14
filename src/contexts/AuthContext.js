@@ -1,4 +1,5 @@
 // src/contexts/AuthContext.js
+import { db } from "firebase-config/firebase-config";
 import { auth, provider } from "firebase-config/firebase-config";
 import {
   createUserWithEmailAndPassword,
@@ -7,8 +8,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
 } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 
 const AuthContext = React.createContext();
@@ -33,6 +34,7 @@ export function AuthProvider({ children }) {
       password
     );
     const user = await response.user;
+
     return user;
   }
 
@@ -55,7 +57,10 @@ export function AuthProvider({ children }) {
     try {
       const result = await signInWithPopup(auth, provider);
 
+      const user = result.user;
+
       console.log("Signed up with google:", result.user);
+      return user;
     } catch (error) {
       console.error("error signing up with google", error);
       throw error;

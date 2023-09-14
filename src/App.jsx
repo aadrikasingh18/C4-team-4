@@ -22,9 +22,10 @@ const App = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={<h2>404 not found</h2>} />
 
-      <Route path="/auth/sign-in" element={<SignIn/>}/>
-      <Route path="/auth/sign-up" element={<SignUp/>}/>
-      
+      <Route path="/auth/sign-in" element={<SignIn />} />
+      <Route path="/auth/sign-up" element={<SignUp />} />
+
+      <Route path="/feed" element={<h2>home feed of documents</h2>} />
     </Routes>
   );
 };

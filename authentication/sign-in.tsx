@@ -10,7 +10,12 @@ const SignInPage: FC = function () {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState({
+    email: '',
+    password: "",
+    confirmPassword: ""
+  });
+
 
   const navigate = useNavigate();
   const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
