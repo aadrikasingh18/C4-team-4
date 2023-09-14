@@ -1,4 +1,5 @@
 // src/contexts/AuthContext.js
+import { createUserDocument } from "firebase-config";
 import { db } from "firebase-config/firebase-config";
 import { auth, provider } from "firebase-config/firebase-config";
 import {
@@ -9,7 +10,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 
 const AuthContext = React.createContext();
@@ -34,7 +35,6 @@ export function AuthProvider({ children }) {
       password
     );
     const user = await response.user;
-
     return user;
   }
 

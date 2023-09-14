@@ -7,6 +7,8 @@ import {
   getDoc,
   updateDoc,
   getDocs,
+  setDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -122,6 +124,28 @@ export const getAllPostsById = async (userId) => {
     return posts;
   } catch (error) {
     console.error("Error fetching posts", error);
+    throw error;
+  }
+};
+
+// User Collection
+
+export const createUserDocument = async (user) => {
+  try {
+    const userRef = collection(db, "users");
+    const userDocRef = doc(userRef, user.uid);
+
+    const docSnap = await getDoc(userDocRef);
+
+    if (!docSnap.exists()) {
+      await setDoc(userDocRef, {
+        displayName: user.displayName,
+        email: user.email,
+        createdAt: serverTimestamp(),
+      });
+    }
+  } catch (error) {
+    console.error("Error creating user document", error);
     throw error;
   }
 };
