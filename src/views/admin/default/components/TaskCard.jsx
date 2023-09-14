@@ -14,7 +14,7 @@ const TaskCard = () => {
             <MdCheckCircle className="h-6 w-6 text-brand-500 dark:text-white" />
           </div>
           <h4 className="ml-4 text-xl font-bold text-navy-700 dark:text-white">
-            Tasks - Week 2 (Critical Need to Work fast)
+            Tasks - Week 3 (keep working)
           </h4>
         </div>
         <CardMenu />
@@ -27,19 +27,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Text Editor Quill - Shanit
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Backend Connections and Api Functions for frontend - Dheeraj
+              Text Editor Socket + enhancement - Shanit
             </p>
           </div>
           <div>
@@ -63,7 +51,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Profile Page UI - Silvi
+              Articles Feed - Aadrika
             </p>
           </div>
           <div>
@@ -75,7 +63,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Documentation Page - Aadrika
+              Home Page - Silvi
             </p>
           </div>
           <div>
@@ -87,7 +75,7 @@ const TaskCard = () => {
           <div className="flex items-center justify-center gap-2">
             <Checkbox />
             <p className="text-base font-bold text-navy-700 dark:text-white">
-              Email Support - SMTP - Ravi
+              Settings Page Firestore - Ravi
             </p>
           </div>
           <div>
