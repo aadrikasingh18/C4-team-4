@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { auth } from "firebase-config/firebase-config";
 import { useAuth } from "contexts/AuthContext";
+import { createUserDocument } from "firebase-config";
 
 const SignUp = () => {
   const { signUp, signUpWithGoogle } = useAuth();
@@ -20,9 +21,11 @@ const SignUp = () => {
     try {
       setError("");
       const user = await signUp(email, password);
-
+      
+      await createUserDocument(user);
+      
       console.log("manual signup data", user);
-
+      
       if (user) {
         await updateProfile(user, {
           displayName: email.split("@")[0],
@@ -39,12 +42,13 @@ const SignUp = () => {
   const handleSignUpWithGoogle = async () => {
     try {
       await signUpWithGoogle();
+      
       navigate("/admin");
     } catch (error) {
       console.error("Error signing up with Google:", error);
     }
   };
-
+  
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}
