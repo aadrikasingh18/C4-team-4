@@ -58,17 +58,8 @@ const Posts = () => {
     setIsGridView(!isGridView);
   };
 
-  const createData = () => {
-    mockBlogData.forEach((mock) => {
-      // console.log(mock)
-      createPost(mock);
-      console.log("data created successfully");
-    });
-  };
-
   return (
     <div>
-      <button onClick={createData} className="mt-8">Create Post</button>
       <div className="post-filters mt-16 flex max-w-7xl justify-between gap-2">
         <div className="relative">
           <div className="flex h-full items-center rounded-full border-2 bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
