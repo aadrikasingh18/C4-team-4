@@ -1,10 +1,13 @@
 import Footer from "components/footer/FooterAuthDefault";
 import { useAuth } from "contexts/AuthContext";
+import { auth } from "firebase-config/firebase-config";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const { currentUser } = useAuth();
+
+  console.log("console from home", auth.currentUser);
 
   return (
     <div>
@@ -15,10 +18,8 @@ const HomePage = () => {
         <Link to="/admin">Take me to Dashboard</Link>
       </button>
 
-      <button className="block bg-gray-500">
-        <Link to="/auth/sign-in">Sign in </Link>
-        <Link to="/auth/sign-up">Sign up link</Link>
-      </button>
+      <Link to="/auth/sign-in">Sign in </Link>
+      <Link to="/auth/sign-up">Sign up link</Link>
 
       <Footer />
     </div>

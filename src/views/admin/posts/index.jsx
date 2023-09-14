@@ -5,32 +5,26 @@ import { useSearchParams } from "react-router-dom";
 import { mockBlogData } from "./mockBlogData";
 import { Card } from "./Card";
 import { GridCard } from "./GridCard";
+import { getAllPosts } from "firebase-config";
+import { getAllPostsById } from "firebase-config";
+import { useAuth } from "contexts/AuthContext";
+import { createPost } from "firebase-config";
 
-import { getAllPosts, createPost } from "firebase-config";
-
-const useFetch = () => {
+const useFetch = (userID) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-
-    getAllPosts()
-      .then((posts) => {
-        setData(posts);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-      });
-  }, []);
+    getAllPostsById(userID).then((response) => setData(response));
+  }, [userID]);
 
   return { data, loading, error };
 };
 
 const Posts = () => {
-  const { data: posts } = useFetch();
+  const { currentUser } = useAuth();
+  const { data: posts } = useFetch(currentUser && currentUser.uid);
 
   console.log(posts);
 
@@ -64,27 +58,17 @@ const Posts = () => {
     setIsGridView(!isGridView);
   };
 
-  const handleCreatePost = async (postData) => {
-    try {
-      const postId = await createPost(postData);
-      console.log(`Blog post created with ID: ${postId}`);
-      // Reset input fields or navigate to a different page
-    } catch (error) {
-      // Handle error, e.g., show an error message to the user
-      console.error("Error creating blog post:", error);
-    }
-  };
-
   const createData = () => {
     mockBlogData.forEach((mock) => {
+      // console.log(mock)
       createPost(mock);
+      console.log("data created successfully");
     });
   };
 
   return (
     <div>
-      <button onClick={createData}>Pass Mock Data to firebase</button>
-
+      <button onClick={createData} className="mt-8">Create Post</button>
       <div className="post-filters mt-16 flex max-w-7xl justify-between gap-2">
         <div className="relative">
           <div className="flex h-full items-center rounded-full border-2 bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[225px]">
@@ -103,14 +87,14 @@ const Posts = () => {
 
         <div className="flex items-center">
           <button
-            className={`rounded-lg pr-2 sm:p-4 dark:text-gray-200`}
+            className={`rounded-lg pr-2 dark:text-gray-200 sm:p-4`}
             onClick={toggleView}
           >
             {isGridView ? <MdViewList /> : <MdGridView />}
           </button>
 
           <select
-            className="rounded-lg p-2 text-xs md:text-base h-10 "
+            className="h-10 rounded-lg p-2 text-xs md:text-base "
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
@@ -131,7 +115,7 @@ const Posts = () => {
       >
         {posts.map((post) => {
           return isGridView ? (
-            <GridCard key={post.id} post={post[0]} />
+            <GridCard key={post.id} postId={post.id} post={post[0]} />
           ) : (
             <Card key={post.id} postId={post.id} post={post[0]} />
           );
