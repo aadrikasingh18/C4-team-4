@@ -7,6 +7,7 @@ import ProtectedLayout from "layouts/ProtectedLayout";
 import HomePage from "views/home";
 import SignIn from "views/auth/SignIn";
 import SignUp from "views/auth/SignUp";
+import ForgotPassword from "views/auth/ForgetPassword";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
 
       <Route path="/auth/sign-in" element={<SignIn />} />
       <Route path="/auth/sign-up" element={<SignUp />} />
+      <Route path="/auth/forgot-password" element={<ForgotPassword />} />
 
       <Route path="/feed" element={<h2>home feed of documents</h2>} />
     </Routes>
