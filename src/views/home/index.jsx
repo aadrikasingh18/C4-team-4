@@ -23,7 +23,7 @@ const HomePage = () => {
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span class="ml-3 text-xl">VeWrite</span>
+            <span class="ml-3 text-xl">hello</span>
           </span>
 
           <nav class="flex flex-wrap items-center justify-center text-base md:ml-auto md:mr-auto">
