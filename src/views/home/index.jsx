@@ -1,10 +1,13 @@
 import Footer from "components/footer/FooterAuthDefault";
 import { useAuth } from "contexts/AuthContext";
+import { auth } from "firebase-config/firebase-config";
 import React from "react";
 import { Link } from "react-router-dom";
 import homeImg from "../../assets/img/home/home-bg.jpg";
 const HomePage = () => {
   const { currentUser } = useAuth();
+
+  console.log("console from home", auth.currentUser);
 
   return (
     <div>
@@ -23,7 +26,7 @@ const HomePage = () => {
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span class="ml-3 text-xl">hello</span>
+            <span class="ml-3 text-xl">VeWrite</span>
           </span>
 
           <nav class="flex flex-wrap items-center justify-center text-base md:ml-auto md:mr-auto">
@@ -37,7 +40,6 @@ const HomePage = () => {
           </nav>
           <button class="mt-4 inline-flex items-center rounded border-0 bg-gray-100 py-1 px-3 text-base hover:bg-gray-200 focus:outline-none md:mt-0">
             <Link to="/admin">Dashboard</Link>
-
             <svg
               fill="none"
               stroke="currentColor"
