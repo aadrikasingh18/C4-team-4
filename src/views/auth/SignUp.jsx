@@ -21,17 +21,13 @@ const SignUp = () => {
     try {
       setError("");
       const user = await signUp(email, password);
-      
-      await createUserDocument(user);
-      
-      console.log("manual signup data", user);
-      
       if (user) {
         await updateProfile(user, {
           displayName: email.split("@")[0],
         });
       }
-
+      
+      await createUserDocument(user);
       navigate("/admin");
     } catch (error) {
       setError(error.message);
@@ -42,13 +38,12 @@ const SignUp = () => {
   const handleSignUpWithGoogle = async () => {
     try {
       await signUpWithGoogle();
-      
       navigate("/admin");
     } catch (error) {
       console.error("Error signing up with Google:", error);
     }
   };
-  
+
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}

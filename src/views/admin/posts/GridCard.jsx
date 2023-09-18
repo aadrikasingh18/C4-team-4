@@ -4,7 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { deletePost } from "firebase-config";
 
 export const GridCard = (props) => {
-  const { post, postId } = props;
+  const { post, postId, handleEdit } = props;
 
   const handleDelete = async () => {
     await deletePost(postId);
@@ -29,9 +29,12 @@ export const GridCard = (props) => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <button className="flex h-8 w-16 items-center justify-between rounded-lg bg-blueSecondary p-2 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000]">
+          <button
+            onClick={() => handleEdit(postId)}
+            className="flex h-8 w-16 items-center justify-between rounded-lg bg-blueSecondary p-2 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000]"
+          >
             <BiBookOpen className="text-sm  " />
-            Open
+            Edit
           </button>
           <button
             onClick={handleDelete}

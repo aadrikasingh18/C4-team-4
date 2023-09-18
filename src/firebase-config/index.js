@@ -1,4 +1,4 @@
-import { db } from "./firebase-config";
+import { db, postsCollection } from "./firebase-config";
 import {
   collection,
   addDoc,
@@ -21,8 +21,9 @@ export const createPost = async (...rest) => {
       throw new Error("User not authenticated.");
     }
 
+    // user ka auth id
     const userId = user.uid;
-    const postRef = collection(db, "posts");
+
     const newPost = {
       ...rest,
       author: {
@@ -31,7 +32,8 @@ export const createPost = async (...rest) => {
       },
       createdAt: new Date(),
     };
-    const docRef = await addDoc(postRef, newPost);
+    const docRef = await addDoc(postsCollection, newPost);
+    // can be used to identify current note id
     return docRef.id;
   } catch (error) {
     console.error("Error creating post", error);
@@ -47,6 +49,7 @@ export const deletePost = async (postId) => {
     }
 
     const postRef = doc(db, "posts", postId);
+
     const postDoc = await getDoc(postRef);
 
     if (postDoc.exists() && postDoc.data().author.userId === user.uid) {
