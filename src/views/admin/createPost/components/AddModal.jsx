@@ -3,7 +3,8 @@ import { FaSave, FaTimes } from "react-icons/fa";
 
 import { HiUpload } from "react-icons/hi";
 
-const AddModal = function () {
+const AddModal = function (props) {
+  const { createPost } = props;
   const [isOpen, setOpen] = useState(false);
 
   return (

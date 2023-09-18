@@ -1,61 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { MdGridView, MdViewList } from "react-icons/md";
-import { useSearchParams } from "react-router-dom";
-import { mockBlogData } from "./mockBlogData";
 import { Card } from "./Card";
 import { GridCard } from "./GridCard";
-import { getAllPosts } from "firebase-config";
-import { getAllPostsById } from "firebase-config";
 import { useAuth } from "contexts/AuthContext";
-import { createPost } from "firebase-config";
-
-const useFetch = (userID) => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    getAllPostsById(userID).then((response) => setData(response));
-  }, [userID]);
-
-  return { data, loading, error };
-};
+import { onSnapshot } from "firebase/firestore";
+import { postsCollection } from "firebase-config/firebase-config";
+import { useNavigate } from "react-router-dom";
 
 const Posts = () => {
   const { currentUser } = useAuth();
-  const { data: posts } = useFetch(currentUser && currentUser.uid);
-
-  console.log(posts);
-
-  const [filteredData, setFilteredData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-
+  const [posts, setPosts] = useState([]);
+  const [currentPostId, setCurrentPostId] = useState(null);
   const [isGridView, setIsGridView] = useState(true);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const typeFilter = searchParams.get("type");
+  const navigate = useNavigate();
 
   const [sortBy, setSortBy] = useState("createdAt");
 
   useEffect(() => {
-    // Simulate fetching data from an API
-    setFilteredData(mockBlogData);
-  }, []);
+    // to avoid memory leak store it into var
+    const userId = currentUser && currentUser.uid;
+    console.log("loading user post");
+    const unsubscribe = onSnapshot(postsCollection, function (snapshot) {
+      // sync up our local notes array with the snapshot data
+      // kind of websocket connection
+      const filterPosts = snapshot.docs.filter((doc) => {
+        return doc.data().author.userId === userId;
+      });
 
-  const handleFilterChange = (key, value) => {
-    setSearchParams((prevParams) => {
-      if (value === null) {
-        prevParams.delete(key);
-      } else {
-        prevParams.set(key, value);
-      }
-      return prevParams;
+      const postsArr = filterPosts.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setPosts(postsArr);
     });
-  };
+
+    return () => unsubscribe;
+  }, [currentUser]);
 
   const toggleView = () => {
     setIsGridView(!isGridView);
+  };
+
+  const handleEdit = (postId) => {
+    console.log(postId);
+    setCurrentPostId(postId);
+    const selectedPost = posts.find((post) => post.id === postId);
+    navigate("/admin/createPost", { state: { selectedPost } });
   };
 
   return (
@@ -69,8 +60,6 @@ const Posts = () => {
             <input
               type="text"
               placeholder="Search by Title"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
               className="block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
             />
           </div>
@@ -106,9 +95,19 @@ const Posts = () => {
       >
         {posts.map((post) => {
           return isGridView ? (
-            <GridCard key={post.id} postId={post.id} post={post[0]} />
+            <GridCard
+              key={post.id}
+              postId={post.id}
+              post={post[0]}
+              handleEdit={handleEdit}
+            />
           ) : (
-            <Card key={post.id} postId={post.id} post={post[0]} />
+            <Card
+              key={post.id}
+              postId={post.id}
+              post={post[0]}
+              handleEdit={handleEdit}
+            />
           );
         })}
       </div>

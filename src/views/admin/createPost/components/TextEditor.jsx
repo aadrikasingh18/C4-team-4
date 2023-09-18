@@ -32,8 +32,8 @@ const TOOLBAR_OPTIONS = [
 // ];
 
 const TextEditor = (props) => {
-    const { handleContent } = props;
-    const [quill, setQuill] = useState(null);
+  const { content, handleContent } = props;
+  const [quill, setQuill] = useState(null);
 
     // const { id: documentId } = useParams()
     // const [socket, setSocket] = useState()
@@ -93,9 +93,14 @@ const TextEditor = (props) => {
                 // }
                 );
                 setQuill(q);
+
+        if (content) {
+          q.clipboard.dangerouslyPasteHTML(content);
+          q.setSelection(q.getLength(), 0);
+        }
             }
         },
-        [quill]
+        [quill, content]
     );
 
     return (
