@@ -100,7 +100,7 @@ const TextEditor = (props) => {
 
     return (
         <>
-            <div className="texteditor w-full rounded-md p-2" ref={wrapperRef}></div>
+            <div className="texteditor w-full rounded-md p-2 dark:text-white" ref={wrapperRef}></div>
         </>
     );
 };
