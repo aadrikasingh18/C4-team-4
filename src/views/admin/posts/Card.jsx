@@ -13,10 +13,10 @@ export const Card = (props) => {
   };
 
   return (
-    <div className="my-4 max-w-7xl overflow-hidden bg-white shadow-md sm:rounded-lg">
+    <div className="my-4 max-w-7xl bg-gray-100 dark:bg-navy-700 overflow-hidden shadow-md sm:rounded-lg">
       <div className="flex items-center justify-between px-4 py-5 sm:px-6">
-        <div>
-          <h3 className="text-lg font-medium text-gray-900">{post.title}</h3>
+        <div className="w-32">
+          <h3 className="oneLine text-lg font-medium text-gray-900 dark:text-white">{post.title}</h3>
           <div className="text-sm font-bold text-blueSecondary dark:text-brandLinear ">
             Published At: {post.createdAt}
           </div>
