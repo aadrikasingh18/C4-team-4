@@ -4,6 +4,7 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes.js";
+import ErrorPage from "views/error";
 
 export default function Admin(props) {
   const { ...rest } = props;
@@ -83,7 +84,8 @@ export default function Admin(props) {
                   path="/"
                   element={<Navigate to="/admin/default" replace />}
                 />
-                <Route path="*" element={<Navigate to="/admin" />} />
+                {/* <Route path="*" element={<Navigate to="/admin" />} /> */}
+                <Route path="*" element={<ErrorPage />} />
               </Routes>
             </div>
             <div className="p-3">
