@@ -59,6 +59,7 @@ input:checked.defaultCheckbox::before {
 }
 .ql-tooltip{
 	width: 400px;
+	padding: 20px;
 	margin-left: 150px;
 	display: flex;
 	justify-content: center;
@@ -96,4 +97,11 @@ input:checked.defaultCheckbox::before {
     display: none;
   }
   
+}
+
+.oneLine{
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 }

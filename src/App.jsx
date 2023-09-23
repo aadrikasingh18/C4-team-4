@@ -8,6 +8,7 @@ import HomePage from "views/home";
 import SignIn from "views/auth/SignIn";
 import SignUp from "views/auth/SignUp";
 import ForgotPassword from "views/auth/ForgetPassword";
+import ErrorPage from "views/error";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
       {/* <Route path="/" element={<Navigate to="/admin" replace />} /> */}
 
       <Route path="/" element={<HomePage />} />
-      <Route path="*" element={<h2>404 not found</h2>} />
+      <Route path="*" element={<ErrorPage />} />
 
       <Route path="/auth/sign-in" element={<SignIn />} />
       <Route path="/auth/sign-up" element={<SignUp />} />
