@@ -4,17 +4,24 @@ import image1 from "assets/img/profile/image1.png";
 import image2 from "assets/img/profile/image2.png";
 import image3 from "assets/img/profile/image3.png";
 import Card from "components/card";
+import { FaHeart, FaCommentDots, FaShareSquare } from "react-icons/fa";
+import { BsFillPinAngleFill } from "react-icons/bs";
 
 const Project = () => {
   return (
     <Card extra={"w-full p-4 h-full"}>
       <div className="mb-8 w-full">
-        <h4 className="text-xl font-bold text-navy-700 dark:text-white">
-          All projects
-        </h4>
+        <div className="flex">
+          <i className="mr-3 text-xl">
+            <BsFillPinAngleFill />
+          </i>
+          <h4 className="text-xl font-bold text-navy-700 dark:text-white">
+            Pinned Articles
+          </h4>
+        </div>
+
         <p className="mt-2 text-base text-gray-600">
-          Here you can find more details about your projects. Keep you user
-          engaged by providing meaningful information.
+          The place where I belong to, my most loved works.
         </p>
       </div>
       {/* Project 1 */}
@@ -36,9 +43,21 @@ const Project = () => {
                 See product details
               </a>
             </p>
+            <div className="flex">
+              <i className="m-3 ml-0">
+                <FaHeart />
+              </i>
+              <i className="m-3">
+                <FaCommentDots />
+              </i>
+              <i className="m-3">
+                <FaShareSquare />
+              </i>
+            </div>
           </div>
         </div>
-        <div className="mr-4 flex items-center justify-center text-gray-600 dark:text-white">
+        <div className="flex-column mr-4 items-center justify-center text-gray-600 dark:text-white">
+          {/* <BsFillPinAngleFill /> */}
           <MdModeEditOutline />
         </div>
       </div>
@@ -61,6 +80,17 @@ const Project = () => {
                 See product details
               </a>
             </p>
+            <div className="flex">
+              <i className="m-3 ml-0">
+                <FaHeart />
+              </i>
+              <i className="m-3">
+                <FaCommentDots />
+              </i>
+              <i className="m-3">
+                <FaShareSquare />
+              </i>
+            </div>
           </div>
         </div>
         <div className="mr-4 flex items-center justify-center text-gray-600 dark:text-white">
@@ -86,6 +116,17 @@ const Project = () => {
                 See product details
               </a>
             </p>
+            <div className="flex">
+              <i className="m-3 ml-0">
+                <FaHeart />
+              </i>
+              <i className="m-3">
+                <FaCommentDots />
+              </i>
+              <i className="m-3">
+                <FaShareSquare />
+              </i>
+            </div>
           </div>
         </div>
         <div className="mr-4 flex items-center justify-center text-gray-600 dark:text-white">

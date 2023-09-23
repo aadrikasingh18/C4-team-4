@@ -74,8 +74,8 @@ const HomePage = () => {
                 thoughts that we put into words!
                 <br />
                 <br />
-                CMS: The canvas where words transform into art, ideas into
-                stories, and writers into creators. Embrace the power of content
+                The canvas where words transform into art, ideas into stories,
+                and writers into creators. Embrace the power of content
                 management systems, for they are the keystones of digital
                 literature.
                 <br />

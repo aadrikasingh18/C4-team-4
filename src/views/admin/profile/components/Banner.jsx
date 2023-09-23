@@ -21,7 +21,7 @@ const Banner = () => {
         <h4 className="text-xl font-bold text-navy-700 dark:text-white">
           Adela Parkson
         </h4>
-        <p className="text-base font-normal text-gray-600">Product Manager</p>
+        <p className="text-base font-normal text-gray-600">Content Writer</p>
       </div>
 
       {/* Post followers */}
