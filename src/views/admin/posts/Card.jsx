@@ -5,7 +5,9 @@ import { BiBookOpen, BiCommentDetail, BiLike } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 
 export const Card = (props) => {
-  const { post, postId } = props;
+
+  const { post, postId, createdAt } = props;
+  const createdDate = new Date(createdAt.toMillis()).toLocaleString();
 
   const handleDelete = async () => {
     await deletePost(postId);
@@ -18,7 +20,7 @@ export const Card = (props) => {
         <div className="w-32">
           <h3 className="oneLine text-lg font-medium text-gray-900 dark:text-white">{post.title}</h3>
           <div className="text-sm font-bold text-blueSecondary dark:text-brandLinear ">
-            Published At: {post.createdAt}
+            Published At: {createdDate}
           </div>
           {!post.editedAt && (
             <div className="text-sm text-gray-500">
