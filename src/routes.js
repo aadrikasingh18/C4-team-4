@@ -2,7 +2,6 @@ import React from "react";
 
 // Admin Imports
 import MainDashboard from "views/admin/default";
-
 import Profile from "views/admin/profile";
 import NewPost from "views/admin/createPost";
 // import RTLDefault from "views/rtl/default";
@@ -26,6 +25,7 @@ import FaqPage from "views/admin/faq";
 import ErrorPage from "views/error";
 import Support  from "views/admin/emailSupport/Support";
 import { RiMailSettingsLine } from "react-icons/ri";
+import ArticlePage from "views/admin/article";
 // import { FaqPage } from "views/admin/faq";
 
 const routes = [
@@ -35,6 +35,13 @@ const routes = [
     path: "default",
     icon: <MdHome className="h-6 w-6" />,
     component: <MainDashboard />,
+  },
+  {
+    name: "Articles Feed",
+    layout: "/admin",
+    path: "feed",
+    icon: <BsPatchQuestionFill className="h-6 w-6" />,
+    component: <ArticlePage />,
   },
   {
     name: "Posts",

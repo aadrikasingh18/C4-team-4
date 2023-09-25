@@ -25,6 +25,7 @@ const Posts = () => {
       // sync up our local notes array with the snapshot data
       // kind of websocket connection
       const filterPosts = snapshot.docs.filter((doc) => {
+        // console.log(doc.data().createdAt);
         return doc.data().author.userId === userId;
       });
 
@@ -32,6 +33,7 @@ const Posts = () => {
         ...doc.data(),
         id: doc.id,
       }));
+      // console.log(postsArr[0].createdAt);
       setPosts(postsArr);
     });
 
@@ -100,6 +102,7 @@ const Posts = () => {
               postId={post.id}
               post={post[0]}
               handleEdit={handleEdit}
+              createdAt={post.createdAt}     
             />
           ) : (
             <Card
@@ -107,6 +110,7 @@ const Posts = () => {
               postId={post.id}
               post={post[0]}
               handleEdit={handleEdit}
+              createdAt={post.createdAt}    
             />
           );
         })}

@@ -28,7 +28,7 @@ const App = () => {
       <Route path="/auth/sign-up" element={<SignUp />} />
       <Route path="/auth/forgot-password" element={<ForgotPassword />} />
 
-      <Route path="/feed" element={<h2>home feed of documents</h2>} />
+      {/* <Route path="/feed" element={<h2>home feed of documents</h2>} /> */}
     </Routes>
   );
 };
