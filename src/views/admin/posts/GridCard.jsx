@@ -1,15 +1,10 @@
 import React from "react";
 import { BiBookOpen } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
-import { deletePost } from "firebase-config";
 
 export const GridCard = (props) => {
-  const { post, postId, handleEdit } = props;
+  const { post, postId, handleEdit, handleDelete } = props;
 
-  const handleDelete = async () => {
-    await deletePost(postId);
-    console.log("deleted successfully");
-  };
 
   return (
     <div className="w-80 overflow-hidden bg-gray-100 dark:bg-navy-700 shadow-md sm:rounded-lg">
@@ -37,7 +32,7 @@ export const GridCard = (props) => {
             Edit
           </button>
           <button
-            onClick={handleDelete}
+            onClick={() => handleDelete(postId)}
             className="mt-4 flex h-8 w-auto items-center justify-between rounded-lg bg-blueSecondary p-2 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000]"
           >
             <AiOutlineDelete className="text-sm " />

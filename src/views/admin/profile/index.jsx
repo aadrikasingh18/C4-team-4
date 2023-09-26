@@ -1,14 +1,11 @@
 import Banner from "./components/Banner";
 import General from "./components/General";
-import Notification from "./components/Notification";
 import Project from "./components/Project";
-import Storage from "./components/Storage";
-import Upload from "./components/Upload";
 
 const ProfileOverview = () => {
   return (
     <div className="flex w-full flex-col gap-5">
-      <div className="w-full mt-3 flex h-fit flex-col gap-5 lg:grid lg:grid-cols-12">
+      <div className="mt-3 flex h-fit w-full flex-col gap-5 lg:grid lg:grid-cols-12">
         <div className="col-span-6 lg:!mb-0">
           <Banner />
         </div>
@@ -23,8 +20,6 @@ const ProfileOverview = () => {
         <div className="col-span-5 lg:col-span-6 lg:mb-0 3xl:col-span-4">
           <Project />
         </div>
-
-
       </div>
     </div>
   );
