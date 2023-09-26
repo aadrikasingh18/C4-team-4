@@ -26,6 +26,7 @@ import ErrorPage from "views/error";
 import Support  from "views/admin/emailSupport/Support";
 import { RiMailSettingsLine } from "react-icons/ri";
 import ArticlePage from "views/admin/article";
+import Setting from "views/admin/setting/Setting";
 // import { FaqPage } from "views/admin/faq";
 
 const routes = [
@@ -76,7 +77,7 @@ const routes = [
     layout: "/admin",
     path: "settings",
     icon: <MdSettings className="h-6 w-6" />,
-    component: <h2>settings</h2>,
+    component: <Setting />,
   },
   {
     name: "FAQ",

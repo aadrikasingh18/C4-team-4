@@ -130,6 +130,37 @@ export const getAllPostsById = async (userId) => {
     throw error;
   }
 };
+//User Details
+
+export const updateUserDetails = async (uid,userDetails) =>{
+  try {
+    console.log(uid);
+    const { bio , location , twiter , instagram } = userDetails;
+    const postRef = collection(db, "posts");
+    const postDoc = await getDocs(postRef);
+
+    const updatedDetails = {
+      bio,
+      location,
+      twiter,
+      instagram
+    }
+    // console.log(updatedDetails)
+    postDoc.forEach(async (docs)=>{
+      // console.log(docs.id);
+      if(docs.data().author.userId === uid){
+        // console.log(docs.data());
+        await updateDoc(doc(db, "posts", docs.id), {updatedDetails})
+        .then(()=>console.log("updated"))
+        .catch((err)=>console.log)
+      }
+    })
+
+  } catch (error) {
+    console.log("Error updating user details : ",error);
+    throw error;
+  }
+}
 
 // User Collection
 
