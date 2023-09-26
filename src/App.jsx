@@ -8,6 +8,7 @@ import HomePage from "views/home";
 import SignIn from "views/auth/SignIn";
 import SignUp from "views/auth/SignUp";
 import ForgotPassword from "views/auth/ForgetPassword";
+import Auth from "layouts/auth";
 import ErrorPage from "views/error";
 
 const App = () => {
@@ -24,9 +25,11 @@ const App = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={<ErrorPage />} />
 
-      <Route path="/auth/sign-in" element={<SignIn />} />
-      <Route path="/auth/sign-up" element={<SignUp />} />
-      <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+      <Route element={<Auth />}>
+        <Route path="/auth/sign-in" element={<SignIn />} />
+        <Route path="/auth/sign-up" element={<SignUp />} />
+        <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+      </Route>
 
       {/* <Route path="/feed" element={<h2>home feed of documents</h2>} /> */}
     </Routes>

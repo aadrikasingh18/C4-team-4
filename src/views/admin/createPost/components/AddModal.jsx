@@ -4,7 +4,7 @@ import { FaSave, FaTimes } from "react-icons/fa";
 import { HiUpload } from "react-icons/hi";
 
 const AddModal = function (props) {
-  const { createPost } = props;
+  const { handleSave, handleInputs, modalData } = props;
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -23,9 +23,9 @@ const AddModal = function (props) {
 
       {isOpen && (
         <div
-          className="modal absolute z-10 mt-5 flex h-auto w-4/5 flex-col items-center justify-center rounded-lg bg-blueSecondary p-3 text-sm font-bold text-white dark:bg-brandLinear dark:text-[#000] md:w-1/2 md:text-base"
+          className="modal absolute z-10 mt-5 flex h-auto w-4/5 flex-col items-center justify-center rounded-lg bg-blueSecondary p-3 text-sm font-bold text-white dark:bg-brandLinear md:w-1/2 md:text-base"
           onClose={() => setOpen(false)}
-          show={isOpen}
+          // show={isOpen}
         >
           <div className="modal_header border-b-4 border-gray-400 !p-4 text-xl dark:border-gray-900 md:text-xl">
             Creating Post
@@ -37,9 +37,11 @@ const AddModal = function (props) {
                   <div htmlFor="postName">Post Name</div>
                   <input
                     id="postName"
-                    name="postName"
+                    name="title"
                     placeholder="Cybersecurity paper"
-                    className="mt-2 w-11/12 rounded-md p-2 "
+                    className="text-[#000] mt-2 w-11/12 rounded-md p-2 "
+                    value={modalData.title}
+                    onChange={handleInputs}
                   />
                 </div>
                 <div className="md:w-1/2">
@@ -48,7 +50,9 @@ const AddModal = function (props) {
                     id="category"
                     name="category"
                     placeholder="Tech"
-                    className="mt-2 w-11/12 rounded-md p-2"
+                    className="text-[#000] mt-2 w-11/12 rounded-md p-2"
+                    value={modalData.category}
+                    onChange={handleInputs}
                   />
                 </div>
               </div>
@@ -57,10 +61,12 @@ const AddModal = function (props) {
                 <div htmlFor="postDetails">Post details</div>
                 <textarea
                   id="postDetails"
-                  name="postDetails"
+                  name="details"
+                  value={modalData.details}
+                  onChange={handleInputs}
                   placeholder="e.g. This post is about Cyber security and its properties and how it defends networks and computers from malicious content."
                   rows={5}
-                  className="mt-1 w-full rounded-lg border-none p-2 md:p-4"
+                  className="text-[#000] mt-1 w-full rounded-lg border-none p-2 md:p-4"
                 />
               </div>
               <div className="mt-2 md:mt-5">
@@ -81,7 +87,13 @@ const AddModal = function (props) {
             </form>
           </div>
           <div className="modal_footer my-5">
-            <button color="primary" onClick={() => setOpen(false)}>
+            <button
+              color="primary"
+              onClick={() => {
+                handleSave("publish");
+                setOpen(false);
+              }}
+            >
               Publish
             </button>
           </div>

@@ -32,6 +32,9 @@ export const createPost = async (...rest) => {
       },
       createdAt: new Date(),
     };
+
+    console.log(newPost);
+
     const docRef = await addDoc(postsCollection, newPost);
     // can be used to identify current note id
     return docRef.id;
