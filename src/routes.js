@@ -15,7 +15,7 @@ import {
   MdSettings,
 } from "react-icons/md";
 import Posts from "views/admin/posts";
-import { BsBucket, BsPatchQuestionFill } from "react-icons/bs";
+import { BsBucket, BsCardList, BsList, BsListCheck, BsPatchQuestionFill } from "react-icons/bs";
 import FaqPage from "views/admin/faq";
 import ErrorPage from "views/error";
 import Support from "views/admin/emailSupport/Support";
@@ -35,7 +35,7 @@ const routes = [
     name: "Articles Feed",
     layout: "/admin",
     path: "feed",
-    icon: <BsPatchQuestionFill className="h-6 w-6" />,
+    icon: <BsCardList className="h-6 w-6" />,
     component: <ArticlePage />,
   },
   {

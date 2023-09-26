@@ -23,7 +23,7 @@ const AddModal = function (props) {
 
       {isOpen && (
         <div
-          className="modal absolute z-10 mt-5 flex h-auto w-4/5 flex-col items-center justify-center rounded-lg bg-blueSecondary p-3 text-sm font-bold text-white dark:bg-brandLinear dark:text-[#000] md:w-1/2 md:text-base"
+          className="modal absolute z-10 mt-5 flex h-auto w-4/5 flex-col items-center justify-center rounded-lg bg-blueSecondary p-3 text-sm font-bold text-white dark:bg-brandLinear md:w-1/2 md:text-base"
           onClose={() => setOpen(false)}
           // show={isOpen}
         >
@@ -39,7 +39,7 @@ const AddModal = function (props) {
                     id="postName"
                     name="title"
                     placeholder="Cybersecurity paper"
-                    className="mt-2 w-11/12 rounded-md p-2 "
+                    className="text-[#000] mt-2 w-11/12 rounded-md p-2 "
                     value={modalData.title}
                     onChange={handleInputs}
                   />
@@ -50,7 +50,7 @@ const AddModal = function (props) {
                     id="category"
                     name="category"
                     placeholder="Tech"
-                    className="mt-2 w-11/12 rounded-md p-2"
+                    className="text-[#000] mt-2 w-11/12 rounded-md p-2"
                     value={modalData.category}
                     onChange={handleInputs}
                   />
@@ -66,7 +66,7 @@ const AddModal = function (props) {
                   onChange={handleInputs}
                   placeholder="e.g. This post is about Cyber security and its properties and how it defends networks and computers from malicious content."
                   rows={5}
-                  className="mt-1 w-full rounded-lg border-none p-2 md:p-4"
+                  className="text-[#000] mt-1 w-full rounded-lg border-none p-2 md:p-4"
                 />
               </div>
               <div className="mt-2 md:mt-5">
