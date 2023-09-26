@@ -103,10 +103,10 @@ const Posts = () => {
         </div>
 
         <div className="flex gap-2">
-          <button onClick={() => handleTypeFilter("status", "draft")}>
+          <button className="dark:text-white" onClick={() => handleTypeFilter("status", "draft")}>
             Drafts
           </button>
-          <button onClick={() => handleTypeFilter("status", "publish")}>
+          <button className="dark:text-white" onClick={() => handleTypeFilter("status", "publish")}>
             Published
           </button>
         </div>
