@@ -9,6 +9,7 @@ import SignIn from "views/auth/SignIn";
 import SignUp from "views/auth/SignUp";
 import ForgotPassword from "views/auth/ForgetPassword";
 import Auth from "layouts/auth";
+import ErrorPage from "views/error";
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
       {/* <Route path="/" element={<Navigate to="/admin" replace />} /> */}
 
       <Route path="/" element={<HomePage />} />
-      <Route path="*" element={<h2>404 not found</h2>} />
+      <Route path="*" element={<ErrorPage />} />
 
       <Route element={<Auth />}>
         <Route path="/auth/sign-in" element={<SignIn />} />
@@ -30,7 +31,7 @@ const App = () => {
         <Route path="/auth/forgot-password" element={<ForgotPassword />} />
       </Route>
 
-      <Route path="/feed" element={<h2>home feed of documents</h2>} />
+      {/* <Route path="/feed" element={<h2>home feed of documents</h2>} /> */}
     </Routes>
   );
 };

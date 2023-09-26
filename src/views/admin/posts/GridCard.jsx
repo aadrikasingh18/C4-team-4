@@ -18,7 +18,7 @@ export const GridCard = (props) => {
           <h3 className="oneLine text-lg font-medium text-gray-900 dark:text-white">{post.title}</h3>
           <div className="mt-1 text-sm text-gray-500">
             <div className="font-bold text-blueSecondary dark:text-brandLinear ">
-              Published At: {post.createdAt}
+              Published At: {createdDate}
             </div>
             <div className="text-xs mt-2">Details: {post.details}</div>
           </div>

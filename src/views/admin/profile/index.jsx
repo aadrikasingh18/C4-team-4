@@ -5,7 +5,7 @@ import Project from "./components/Project";
 const ProfileOverview = () => {
   return (
     <div className="flex w-full flex-col gap-5">
-      <div className="mt-3 flex h-fit w-full flex-col gap-5 lg:grid lg:grid-cols-12">
+      <div className="lg:grid-cols-22 mt-3 flex h-fit w-full flex-col gap-5 lg:grid">
         <div className="col-span-6 lg:!mb-0">
           <Banner />
         </div>
