@@ -3,11 +3,12 @@ import { BiBookOpen } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 
 export const GridCard = (props) => {
-  const { post, postId, handleEdit, handleDelete } = props;
+  const { post, postId, handleEdit, handleDelete, createdAt } = props;
 
+  const createdDate = new Date(createdAt.toMillis()).toLocaleString();
 
   return (
-    <div className="w-80 overflow-hidden bg-gray-100 dark:bg-navy-700 shadow-md sm:rounded-lg">
+    <div className="w-80 overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 sm:rounded-lg">
       <img
         src={post.imageUrl}
         alt={post.title}
@@ -15,12 +16,14 @@ export const GridCard = (props) => {
       />
       <div className="flex items-center justify-between px-2 py-1 sm:p-6">
         <div>
-          <h3 className="oneLine text-lg font-medium text-gray-900 dark:text-white">{post.title}</h3>
+          <h3 className="oneLine text-lg font-medium text-gray-900 dark:text-white">
+            {post.title}
+          </h3>
           <div className="mt-1 text-sm text-gray-500">
             <div className="font-bold text-blueSecondary dark:text-brandLinear ">
               Published At: {createdDate}
             </div>
-            <div className="text-xs mt-2">Details: {post.details}</div>
+            <div className="mt-2 text-xs">Details: {post.details}</div>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center">
