@@ -33,7 +33,6 @@ const Posts = () => {
       // sync up our local notes array with the snapshot data
       // kind of websocket connection
       const filterPosts = snapshot.docs.filter((doc) => {
-        // console.log(doc.data().createdAt);
         return doc.data().author.userId === userId;
       });
 
