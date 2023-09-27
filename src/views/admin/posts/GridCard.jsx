@@ -1,6 +1,7 @@
 import React from "react";
 import { BiBookOpen } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
+import { formatDistanceToNow } from "date-fns";
 
 export const GridCard = (props) => {
   const { post, postId, handleEdit, handleDelete, createdAt } = props;
@@ -21,7 +22,7 @@ export const GridCard = (props) => {
           </h3>
           <div className="mt-1 text-sm text-gray-500">
             <div className="font-bold text-blueSecondary dark:text-brandLinear ">
-              Published At: {createdDate}
+              Published {formatDistanceToNow(new Date(createdDate),{ addSuffix: true}) }
             </div>
             <div className="mt-2 text-xs">Details: {post.details}</div>
           </div>
