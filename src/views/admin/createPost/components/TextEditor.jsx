@@ -32,27 +32,8 @@ const TOOLBAR_OPTIONS = [
 // ];
 
 const TextEditor = (props) => {
-  const { content, handleContent } = props;
-  const [quill, setQuill] = useState(null);
-
-    // const { id: documentId } = useParams()
-    // const [socket, setSocket] = useState()
-
-    // useEffect(() => {
-    //     const s = io("http://localhost:3001")
-    //     setSocket(s)
-
-    //     return () => {
-    //       s.disconnect()
-    //     }
-    //   }, [])
-    // useEffect(()=>{
-    //     quill.on('text-change', (delta, oldDelta, source)=>{
-    //         if(source !== 'user') return
-
-    //         //
-    //     })
-    // })
+    const { docId, content, handleContent } = props;
+    const [quill, setQuill] = useState(null);
 
     useEffect(() => {
         let unmounted = false;
@@ -66,7 +47,6 @@ const TextEditor = (props) => {
             };
 
             quill.on("text-change", handleChange);
-
             return () => {
                 quill.off("text-change", handleChange);
             };
@@ -87,17 +67,17 @@ const TextEditor = (props) => {
                     theme: "snow",
                     modules: { toolbar: TOOLBAR_OPTIONS }, //Toolbar on the top
                 },
-                //     editor, {
-                //     theme: "bubble",
-                //     modules: { toolbar: TOOLBAR_OPTIONS_1 }, //Tooltip for mini editing
-                // }
+                    //     editor, {
+                    //     theme: "bubble",
+                    //     modules: { toolbar: TOOLBAR_OPTIONS_1 }, //Tooltip for mini editing
+                    // }
                 );
                 setQuill(q);
 
-        if (content) {
-          q.clipboard.dangerouslyPasteHTML(content);
-          q.setSelection(q.getLength(), 0);
-        }
+                if (content) {
+                    q.clipboard.dangerouslyPasteHTML(content);
+                    q.setSelection(q.getLength(), 0);
+                }
             }
         },
         [quill, content]
