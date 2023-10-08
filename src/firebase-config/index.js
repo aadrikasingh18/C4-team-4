@@ -1,4 +1,4 @@
-import { db, postsCollection } from "./firebase-config";
+import { db, postsCollection, auth } from "./firebase-config";
 import {
   collection,
   addDoc,
@@ -10,9 +10,8 @@ import {
   setDoc,
   serverTimestamp,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 
-const auth = getAuth();
+
 
 export const createPost = async (...rest) => {
   try {
@@ -30,7 +29,7 @@ export const createPost = async (...rest) => {
         name: user.displayName,
         userId: userId,
       },
-      createdAt: new Date(),
+      createdAt: Date.now(),
     };
 
     console.log(newPost);

@@ -149,6 +149,7 @@ const Posts = () => {
               handleEdit={handleEdit}
               handleDelete={handleDelete}
               createdAt={post.createdAt}     
+              updatedAt={post.updatedAt}
             />
           ) : (
             <Card
@@ -158,6 +159,7 @@ const Posts = () => {
               handleEdit={handleEdit}
               handleDelete={handleDelete}
               createdAt={post.createdAt}    
+              updatedAt={post.updatedAt}
             />
           );
         })}

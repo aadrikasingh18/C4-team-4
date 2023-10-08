@@ -1,7 +1,9 @@
-// src/contexts/AuthContext.js
+import React, { useContext, useEffect, useState } from "react";
 import { createUserDocument } from "firebase-config";
 import { db } from "firebase-config/firebase-config";
+
 import { auth, provider } from "firebase-config/firebase-config";
+
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -10,8 +12,6 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { addDoc, collection, doc } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
 
 const AuthContext = React.createContext();
 
@@ -20,11 +20,8 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(() => {
-    return localStorage.getItem("currentUser")
-      ? JSON.parse(localStorage.getItem("currentUser"))
-      : null;
-  });
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Sign-up function
   async function signUp(email, password) {
@@ -68,17 +65,18 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-
-      if (user) {
-        localStorage.setItem("currentUser", JSON.stringify(user));
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        setCurrentUser(authUser);
       } else {
-        localStorage.removeItem("currentUser");
+        setCurrentUser(null);
       }
+      setLoading(false);
     });
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const value = {
@@ -89,6 +87,10 @@ export function AuthProvider({ children }) {
     logOut,
     signUpWithGoogle,
   };
+
+  if (loading) {
+    return <h2>Loading</h2>;
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

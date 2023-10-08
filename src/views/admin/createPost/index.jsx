@@ -24,8 +24,22 @@ const NewPost = () => {
     category: selectedPost ? selectedPost[0]?.category : "",
   });
 
-  const handleContent = (newContent) => {
+  const handleContent = async (newContent) => {
     setContent(newContent);
+
+    if (selectedPost) {
+      const updatedPostData = { ...selectedPost };
+      updatedPostData[0].content = newContent;
+      updatedPostData.updatedAt = Date.now()
+
+      console.log(updatedPostData);
+
+      // await editPost(selectedPost.id, updatedPostData);
+      // toast.success(`Auto Save!`, {
+      //   position: toast.POSITION.TOP_RIGHT,
+      //   autoClose: 3000,
+      // });
+    }
   };
 
   // console.log(modalData);
@@ -69,6 +83,7 @@ const NewPost = () => {
       const updatedPostData = { ...selectedPost };
       updatedPostData[0].content = content;
       updatedPostData[0].title = content.slice(0, 90);
+      updatedPostData.updatedAt = Date.now()
 
       await editPost(selectedPost.id, updatedPostData);
       toast.success(`Post Updated Successfully!`, {

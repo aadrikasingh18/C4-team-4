@@ -1,4 +1,4 @@
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, hoursToMilliseconds } from "date-fns";
 import { deletePost } from "firebase-config";
 import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -6,10 +6,11 @@ import { BiBookOpen, BiCommentDetail, BiLike } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 
 export const Card = (props) => {
+  const { post, postId, handleDelete, handleEdit, createdAt, updatedAt } = props;
+  const createdDate = new Date(createdAt).toLocaleString();
+  const updatedDate = new Date(createdAt).toLocaleString();
 
-  const { post, postId, handleDelete, handleEdit, createdAt } = props;
-  const createdDate = new Date(createdAt.toMillis()).toLocaleString();
-
+  const displayDate = updatedAt ? updatedDate: createdDate
 
   return (
     <div className="my-4 max-w-7xl overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 sm:rounded-lg">
@@ -19,22 +20,23 @@ export const Card = (props) => {
             {post.title}
           </h3>
           <div className="text-sm font-bold text-blueSecondary dark:text-brandLinear ">
-            Published {formatDistanceToNow(new Date(createdDate),{ addSuffix: true}) }
+            Published{" "}
+            {formatDistanceToNow(new Date(displayDate), { addSuffix: true })}
           </div>
-          {!post.editedAt && (
+          {updatedAt && (
             <div className="text-sm text-gray-500">
-              Last Edited: {post.editedAt}
+              Last Edited: {updatedDate}
             </div>
           )}
         </div>
-        <div className="flex justify-center gap-4 w-1/3">
+        <div className="flex w-1/3 justify-center gap-4">
           <p className="mt-2 text-sm text-gray-500">Likes: {post.likes}</p>
           <p className="mt-2 text-sm text-gray-500">Views: {post.views}</p>
           <p className="mt-2 text-sm text-gray-500">
             Comments: {post.comments}
           </p>
         </div>
-        <div className="flex items-center justify-end w-1/3">
+        <div className="flex w-1/3 items-center justify-end">
           <button
             onClick={() => handleEdit(postId)}
             className="flex h-8 w-16 items-center justify-between rounded-lg bg-blueSecondary p-2 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000]"
