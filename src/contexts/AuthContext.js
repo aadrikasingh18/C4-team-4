@@ -20,12 +20,9 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(() => {
-    return localStorage.getItem("currentUser")
-      ? JSON.parse(localStorage.getItem("currentUser"))
-      : null;
-  });
-
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+ 
   // Sign-up function
   async function signUp(email, password) {
     console.log(email, password);
@@ -60,6 +57,7 @@ export function AuthProvider({ children }) {
       const user = result.user;
 
       console.log("Signed up with google:", result.user);
+      await createUserDocument(currentUser.uid, user);
       return user;
     } catch (error) {
       console.error("error signing up with google", error);
@@ -68,17 +66,18 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-
-      if (user) {
-        localStorage.setItem("currentUser", JSON.stringify(user));
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        setCurrentUser(authUser);
       } else {
-        localStorage.removeItem("currentUser");
+        setCurrentUser(null);
       }
+      setLoading(false);
     });
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const value = {
@@ -89,6 +88,8 @@ export function AuthProvider({ children }) {
     logOut,
     signUpWithGoogle,
   };
-
+  if (loading) {
+    return <h2>Loading</h2>;
+  }
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

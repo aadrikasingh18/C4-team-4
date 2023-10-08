@@ -21,6 +21,7 @@ const Setting = () => {
         twiter,
         instagram
       }
+      console.log(currentUser.uid);
       updateUserDetails(currentUser.uid,updateData);
     }
   return (
