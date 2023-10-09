@@ -27,8 +27,7 @@ const Navbar = (props) => {
     displayName: "anonymous user",
   };
 
-  const initials = displayName
-    .split(" ")
+  const initials = displayName?.split(" ")
     .map((name) => name[0].toUpperCase())
     .join("");
 

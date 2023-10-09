@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "contexts/AuthContext";
 
 const Support = () => {
-  const [name, setName] = useState("");
+  const { currentUser } = useAuth();
+  const [name, setName] = useState(currentUser.displayName);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email, message);
+    if(!name || !email || !message){
+      setError("Please fill the above fields!");
+      return;
+    }
     const config = {
       Host: process.env.REACT_APP_Host,
       Username: process.env.REACT_APP_Username,
@@ -44,7 +51,7 @@ const Support = () => {
               className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
               id="username"
               type="text"
-              placeholder="John Doe"
+              placeholder={currentUser.displayName}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
