@@ -13,6 +13,7 @@ import {
 import { getAuth } from "firebase/auth";
 
 const auth = getAuth();
+console.log(auth.currentUser);
 
 export const createPost = async (...rest) => {
   try {
@@ -139,9 +140,9 @@ export const updateUserDetails = async (uid,userDetails) =>{
   try {
     console.log(uid);
     const { bio , location , twiter , instagram } = userDetails;
-    const postRef = collection(db, "posts");
+    const postRef = collection(db, "users");
     const postDoc = await getDocs(postRef);
-
+    console.log(postDoc);
     const updatedDetails = {
       bio,
       location,
@@ -150,10 +151,10 @@ export const updateUserDetails = async (uid,userDetails) =>{
     }
     // console.log(updatedDetails)
     postDoc.forEach(async (docs)=>{
-      // console.log(docs.id);
-      if(docs.data().author.userId === uid){
+      console.log(docs.data().userUid);
+      if(docs.data().userUid === uid){
         // console.log(docs.data());
-        await updateDoc(doc(db, "posts", docs.id), {updatedDetails})
+        await updateDoc(doc(db, "users", docs.id), {updatedDetails})
         .then(()=>console.log("updated"))
         .catch((err)=>console.log)
       }
@@ -167,7 +168,7 @@ export const updateUserDetails = async (uid,userDetails) =>{
 
 // User Collection
 
-export const createUserDocument = async (user) => {
+export const createUserDocument = async (uid,user) => {
   try {
     const userRef = collection(db, "users");
     const userDocRef = doc(userRef, user.uid);
@@ -179,6 +180,7 @@ export const createUserDocument = async (user) => {
         displayName: user.displayName,
         email: user.email,
         createdAt: serverTimestamp(),
+        userUid : uid
       });
     }
   } catch (error) {

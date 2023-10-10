@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InputField from "./../../components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "./../../components/checkbox/index";
@@ -10,28 +10,28 @@ import { createUserDocument } from "firebase-config";
 
 const SignUp = () => {
   const { signUp, signUpWithGoogle } = useAuth();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+  
   const handleSignup = async () => {
     try {
       setError("");
-      const user = await signUp(email, password);
+      const user= await signUp(email, password);
       if (user) {
         await updateProfile(user, {
           displayName: email.split("@")[0],
         });
       }
-      
-      await createUserDocument(user);
+      const currUser = auth.currentUser;
+      console.log(currUser.uid);
+      await createUserDocument(currUser.uid,user);
       navigate("/admin");
     } catch (error) {
       setError(error.message);
-      console.log("error");
+      console.log(error);
     }
   };
 
