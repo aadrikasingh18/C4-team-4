@@ -32,7 +32,7 @@ const TOOLBAR_OPTIONS = [
 // ];
 
 const TextEditor = (props) => {
-    const { docId, content, handleContent } = props;
+    const {  content, handleContent } = props;
     const [quill, setQuill] = useState(null);
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const TextEditor = (props) => {
 
         if (quill) {
             const handleChange = (delta, oldDelta, source) => {
-                if (!unmounted && source === "user") {
+                if (!unmounted && source === 'user') {
                     const updatedContent = quill.getText();
                     handleContent(updatedContent);
                 }

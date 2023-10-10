@@ -15,7 +15,8 @@ export const CollabModal = (props) => {
         toast.success(`Collab Invite Sent`, {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 3000,
-          });
+        });
+        
         console.log(email);
         setEmail('')
     }
