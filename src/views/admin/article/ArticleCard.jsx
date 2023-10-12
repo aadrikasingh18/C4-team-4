@@ -4,7 +4,7 @@ import React from "react";
 export const ArticleCard = (props) => {
   const { post, authorData, createdAt } = props;
 
-  const createdDate = new Date(createdAt.toMillis()).toLocaleString();
+  const createdDate = new Date(createdAt).toLocaleString();
 
   return (
     <div className="my-4 max-w-7xl overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 rounded-xl">
