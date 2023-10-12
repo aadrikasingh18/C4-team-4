@@ -9,7 +9,7 @@ export const GridCard = (props) => {
   const createdDate = new Date(createdAt).toLocaleString();
 
   return (
-    <div className="w-80 overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 sm:rounded-lg">
+    <div className="w-80 overflow-hidden bg-gray-200 shadow-md dark:bg-navy-700 sm:rounded-lg">
       <img
         src={post.imageUrl}
         alt={post.title}

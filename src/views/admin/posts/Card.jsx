@@ -14,7 +14,7 @@ export const Card = (props) => {
   const displayDate = updatedAt ? updatedDate : createdDate;
 
   return (
-    <div className="my-4 max-w-7xl overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 sm:rounded-lg">
+    <div className="my-4 max-w-7xl overflow-hidden bg-gray-200 shadow-md dark:bg-navy-700 sm:rounded-lg">
       <div className="flex items-center justify-between px-4 py-5 sm:px-6">
         <div className="w-1/3">
           <h3 className="oneLine text-lg font-medium text-gray-900 dark:text-white">

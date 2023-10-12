@@ -58,7 +58,7 @@ input:checked.defaultCheckbox::before {
 	border: none;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
 	border-radius: 10px;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .ql-tooltip{
 	width: 400px;

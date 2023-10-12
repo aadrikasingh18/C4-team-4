@@ -7,7 +7,7 @@ export const ArticleCard = (props) => {
   const createdDate = new Date(createdAt).toLocaleString();
 
   return (
-    <div className="my-4 max-w-7xl overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 rounded-xl">
+    <div className="my-4 max-w-7xl overflow-hidden bg-gray-200 shadow-md dark:bg-navy-700 rounded-xl">
       <div className="flex items-center justify-between px-4 py-5 sm:px-6">
         <div className="w-fit basis-3/4">
           <h3 className="oneLine text-gray-1000 text-xl md:text-3xl font-bold dark:text-white">
