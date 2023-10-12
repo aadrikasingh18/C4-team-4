@@ -6,7 +6,7 @@ import { formatDistanceToNow } from "date-fns";
 export const GridCard = (props) => {
   const { post, postId, handleEdit, handleDelete, createdAt } = props;
 
-  const createdDate = new Date(createdAt.toMillis()).toLocaleString();
+  const createdDate = new Date(createdAt).toLocaleString();
 
   return (
     <div className="w-80 overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 sm:rounded-lg">
@@ -22,7 +22,8 @@ export const GridCard = (props) => {
           </h3>
           <div className="mt-1 text-sm text-gray-500">
             <div className="font-bold text-blueSecondary dark:text-brandLinear ">
-              Published {formatDistanceToNow(new Date(createdDate),{ addSuffix: true}) }
+              Published{" "}
+              {formatDistanceToNow(new Date(createdDate), { addSuffix: true })}
             </div>
             <div className="mt-2 text-xs">Details: {post.details}</div>
           </div>
