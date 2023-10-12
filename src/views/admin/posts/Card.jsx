@@ -6,11 +6,12 @@ import { BiBookOpen, BiCommentDetail, BiLike } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 
 export const Card = (props) => {
-  const { post, postId, handleDelete, handleEdit, createdAt, updatedAt } = props;
+  const { post, postId, handleDelete, handleEdit, createdAt, updatedAt } =
+    props;
   const createdDate = new Date(createdAt).toLocaleString();
   const updatedDate = new Date(updatedAt).toLocaleString();
 
-  const displayDate = updatedAt ? updatedDate: createdDate
+  const displayDate = updatedAt ? updatedDate : createdDate;
 
   return (
     <div className="my-4 max-w-7xl overflow-hidden bg-gray-100 shadow-md dark:bg-navy-700 sm:rounded-lg">
@@ -21,7 +22,7 @@ export const Card = (props) => {
           </h3>
           <div className="text-sm font-bold text-blueSecondary dark:text-brandLinear ">
             Published{" "}
-            {formatDistanceToNow(new Date(displayDate), { addSuffix: true })}
+            {formatDistanceToNow(new Date(createdDate), { addSuffix: true })}
           </div>
           {updatedAt && (
             <div className="text-sm text-gray-500">
