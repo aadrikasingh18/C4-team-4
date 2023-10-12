@@ -5,6 +5,8 @@ import { MdOutlineSave } from "react-icons/md";
 import { createPost, editPost } from "firebase-config";
 import { useToast } from "contexts/ToastContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import { CollabModal } from "./components/CollabModal";
+import { db } from "firebase-config/firebase-config";
 
 const NewPost = () => {
   const location = useLocation();
@@ -19,6 +21,7 @@ const NewPost = () => {
     details: selectedPost ? selectedPost?.details : "",
     category: selectedPost ? selectedPost?.category : "",
   });
+
 
   const handleContent = (newContent) => {
     setContent(newContent);
@@ -94,8 +97,8 @@ const NewPost = () => {
 
   return (
     <div className="flex w-full flex-col justify-center overflow-hidden">
-      <div className=" flex items-center justify-between p-4">
-        <div className="flex">
+      <div className=" flex w-full items-center justify-center py-4">
+        <div className="flex flex-wrap">
           <AddModal
             modalData={modalData}
             handleInputs={handleInputs}
@@ -103,11 +106,12 @@ const NewPost = () => {
           />
           <button
             onClick={() => createOrUpdatePost("draft")}
-            className="flex h-10 w-auto items-center justify-between rounded-lg bg-blueSecondary px-4 py-2 font-bold text-white dark:bg-brandLinear dark:text-[#000]"
+            className="mx-1 flex h-7 w-auto items-center justify-between rounded-lg bg-blueSecondary p-1 text-xs font-bold text-white dark:bg-brandLinear dark:text-[#000] sm:h-10 sm:p-3 sm:text-base md:mx-3"
           >
-            <MdOutlineSave className="mr-2" />
+            <MdOutlineSave className="mr-1 sm:mr-2" />
             <div>Save Draft</div>
           </button>
+          <CollabModal />
         </div>
       </div>
       <TextEditor
