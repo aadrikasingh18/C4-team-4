@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { createUserDocument } from "firebase-config";
-import { db } from "firebase-config/firebase-config";
 
 import { auth, provider } from "firebase-config/firebase-config";
 
@@ -57,6 +56,7 @@ export function AuthProvider({ children }) {
       const user = result.user;
 
       console.log("Signed up with google:", result.user);
+      await createUserDocument(currentUser.uid, user);
       return user;
     } catch (error) {
       console.error("error signing up with google", error);
@@ -87,6 +87,10 @@ export function AuthProvider({ children }) {
     logOut,
     signUpWithGoogle,
   };
+
+  if (loading) {
+    return <h2>Loading</h2>;
+  }
 
   if (loading) {
     return <h2>Loading</h2>;
