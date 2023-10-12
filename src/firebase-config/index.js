@@ -13,7 +13,7 @@ import {
 
 
 
-export const createPost = async (...rest) => {
+export const createPost = async (rest) => {
   try {
     const user = auth.currentUser;
     if (!user) {

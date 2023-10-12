@@ -8,7 +8,7 @@ import { BsEye } from "react-icons/bs";
 export const Card = (props) => {
   const { post, postId, handleDelete, handleEdit, createdAt, updatedAt } = props;
   const createdDate = new Date(createdAt).toLocaleString();
-  const updatedDate = new Date(createdAt).toLocaleString();
+  const updatedDate = new Date(updatedAt).toLocaleString();
 
   const displayDate = updatedAt ? updatedDate: createdDate
 

@@ -22,12 +22,12 @@ const ArticlePage = () => {
       <div>
         {posts &&
           posts
-            .filter((post) => post[0].published)
+            .filter((post) => post.published)
             .sort((a, b) => b.createdAt - a.createdAt)
             .map((post) => {
               return (
                 <ArticleCard
-                  post={post[0]}
+                  post={post}
                   authorData={post.author}
                   createdAt={post.createdAt}
                 />

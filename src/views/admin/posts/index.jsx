@@ -82,7 +82,7 @@ const Posts = () => {
   };
 
   const filteredPosts = typeFilter
-    ? posts.filter((post) => post[0].status.toLowerCase() === typeFilter)
+    ? posts.filter((post) => post.status.toLowerCase() === typeFilter)
     : posts;
 
   return (
@@ -145,7 +145,7 @@ const Posts = () => {
             <GridCard
               key={post.id}
               postId={post.id}
-              post={post[0]}
+              post={post}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
               createdAt={post.createdAt}     
@@ -155,7 +155,7 @@ const Posts = () => {
             <Card
               key={post.id}
               postId={post.id}
-              post={post[0]}
+              post={post}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
               createdAt={post.createdAt}    
