@@ -4,7 +4,7 @@ import Quill from "quill";
 import React, { useState, useEffect } from "react";
 import TextEditor from "../../createPost/components/TextEditor";
 
-export const CollabEditor = (props) => {
+const CollabEditor = (props) => {
   const [postRef, setPostRef] = useState();
   const [collaborationSessionRef, setCollaborationSessionRef] = useState();
   const [post, setPost] = useState();
@@ -66,3 +66,5 @@ export const CollabEditor = (props) => {
     <TextEditor quill={quill} content={post.content} />;
   </div> 
 )};
+
+export default CollabEditor
