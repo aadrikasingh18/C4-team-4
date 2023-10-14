@@ -1,9 +1,12 @@
 import { formatDistanceToNow } from "date-fns";
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 
 export const ArticleCard = (props) => {
   const { post, authorData, createdAt } = props;
 
+  const [like, setLike]=useState(false)
+  
   const createdDate = new Date(createdAt).toLocaleString();
 
   return (
@@ -23,6 +26,20 @@ export const ArticleCard = (props) => {
           </div>
           <div className="text-slate-300 text-xs dark:text-gray-400 ">
           Posted {formatDistanceToNow(new Date(createdDate),{ addSuffix: true}) }
+          </div>
+          {/* like section */}
+          <div className="flex items-center mt-2">
+            {like ? (
+              <button className="" onClick={()=>setLike(!like)}>
+                <AiTwotoneHeart className="text-lg text-red-500"/>
+              </button>
+              ):(
+              <button className="" onClick={()=>setLike(!like)}>
+                <AiOutlineHeart className="text-lg text-red-500"/>
+              </button>
+            )}
+            {/* insert the number of likes here */}
+            <div className="mx-2">Likes</div>
           </div>
         </div>
         <div className="flex items-center justify-center">
