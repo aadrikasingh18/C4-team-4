@@ -12,7 +12,7 @@ const CollabList = (props) => {
   };
 
   return (
-    <div className=" dark:text-white w-80 overflow-hidden bg-gray-200 shadow-md dark:bg-navy-700 sm:rounded-lg m-2">
+    <div className=" dark:text-white w-64 overflow-hidden bg-gray-200 shadow-md dark:bg-navy-700 sm:rounded-lg m-2">
       <img className="h-32 w-full object-cover" src={post.imageUrl} alt="post tile" />
       <div className="p-5">
         <div className="">
