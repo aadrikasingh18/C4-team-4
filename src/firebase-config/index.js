@@ -9,6 +9,8 @@ import {
   getDocs,
   setDoc,
   serverTimestamp,
+  arrayUnion,
+  runTransaction,
 } from "firebase/firestore";
 
 export const createPost = async (rest) => {
@@ -168,3 +170,131 @@ export const createUserDocument = async (uid, user) => {
     throw error;
   }
 };
+
+//add collab mail
+
+// export const addCollabMail = async (postId, newMail) => {
+//   try {
+//     const user = auth.currentUser;
+//     if (!user) {
+//       throw new Error("User not authenticated.");
+//     }
+
+//     const postRef = collection(db, "posts");
+//     const postDoc = await getDocs(postRef);
+
+//     for (const docs of postDoc.docs) {
+//       if (docs.exists()) {
+//         const collabMails = docs.data().collabMails || [];
+
+//         // Add the new mail to the existing array
+//         collabMails.push(newMail);
+
+//         try {
+//           // await setDoc(doc(db, "posts", postId), { collabMails: collabMails }, { merge: true });
+//           await updateDoc(doc(db, "posts", postId), { collabMails: collabMails });
+//           console.log("Updated");
+//         } catch (err) {
+//           console.error("Error updating document:", err);
+//         }
+//       } else {
+//         console.error("Unauthorized to add collaborators.");
+//       }
+//     }
+//   } catch (error) {
+//     console.log("Error updating collab mails: ", error);
+//     throw error;
+//   }
+// };
+
+export const addCollabMail = async (postId, newMail) => {
+  try {
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("User not authenticated.");
+    }
+
+    const postRef = doc(db, "posts", postId);
+
+    await runTransaction(db, async (transaction) => {
+      const postDoc = await transaction.get(postRef);
+      
+      if (postDoc.exists()) {
+        const existingData = postDoc.data();
+        const collabMails = existingData.collabMails || [];
+        //check if mail is already invited or not
+        if(collabMails.includes(newMail)){
+          console.log("Mail already invited");
+          return;// exits the runTransaction
+        }
+        // Add the new mail to the existing array
+        collabMails.push(newMail);
+
+        transaction.set(postRef, { collabMails: collabMails }, { merge: true });
+        console.log("Updated");
+      } else {
+        console.error("Unauthorized to add collaborators.");
+      }
+    });
+  } catch (error) {
+    console.error("Error updating collab mails: ", error);
+    throw error;
+  }
+};
+
+//show collab invites
+
+export const collabInvites= async (userId)=>{
+  try{
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("User not authenticated.");
+    }
+    // post db 
+    const getRef = collection(db, "posts");
+    const getDoc = await getDocs(getRef);
+    //user db
+    const postRef = doc(db,"users",userId);
+
+    await runTransaction(db, async (transaction) => {
+      const postDoc = await transaction.get(postRef);
+      if(postDoc.exists()){
+        const email=postDoc.data().email;
+        const collabDocs= postDoc.data().collabDocs || [];
+        
+        
+        for (const doc of getDoc.docs) {
+          const collabMails = doc.data().collabMails || [];
+          // Check if the document is already in collabDocs
+          if (collabDocs.includes(doc.id)) {
+           console.log("Document already exists in collabDocs. Exiting.");
+           break; // Exit early if the document is already in collabDocs
+         }
+    
+          if (collabMails.includes(email)) {
+            console.log("mail present",email);
+
+            // Add the new doc to the existing array
+            collabDocs.push(doc.id);
+            console.log(doc.id);
+            try{
+              transaction.set(postRef, { collabDocs: collabDocs }, { merge: true });
+              console.log("Updated");
+            }catch(error){
+              console.error("Error updating doc: ", error);
+              throw error;
+            }
+            break;
+          }
+          else{
+            console.log("Mail is not present")
+          }
+        }
+      }
+    })
+  }
+  catch (error) {
+    console.error("Error showing collab mails: ", error);
+    throw error;
+  }
+}

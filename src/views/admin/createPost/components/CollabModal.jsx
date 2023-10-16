@@ -3,14 +3,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoPeopleCircle } from 'react-icons/io5'
 import { FcInvite } from 'react-icons/fc';
+import { useAuth } from 'contexts/AuthContext';
+import { addCollabMail } from 'firebase-config';
+import { useLocation } from 'react-router-dom';
 
 export const CollabModal = (props) => {
+    const location = useLocation();
+    const { selectedPost } = location.state || {};
+
+
     const [isOpen, setOpen] = useState(false);
     const [email, setEmail] = useState('');
 
-
-    const handleInvite=()=>{
-        
+    const {currentUser}=useAuth()
+    const handleInvite= async ()=>{
+        console.log(currentUser.id);
+        await addCollabMail(selectedPost.id,email)
         setOpen(!isOpen)
         toast.success(`Collab Invite Sent`, {
             position: toast.POSITION.TOP_RIGHT,

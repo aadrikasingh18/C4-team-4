@@ -19,7 +19,7 @@ const CollabPost = () => {
     fetchApiData();
   }, []);
   return (
-    <div className="flex mt-14 w-full items-center justify-center overflow-hidden">
+    <div className="flex mt-14 w-full flex-wrap items-center justify-start overflow-hidden">
       {/* <CollabEditor/> */}
       {posts && posts
         .filter((post) => post.published)

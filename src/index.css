@@ -34,7 +34,6 @@ input:checked.defaultCheckbox::before {
 	margin: 10px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 5);
 	background-color: "#1B254B";
-	/* color: white; */
 	border-radius: 10px;
 	overflow: hidden;
 }
@@ -94,6 +93,7 @@ input:checked.defaultCheckbox::before {
     margin: 0;
     box-shadow: none;
     align-self: flex-start;
+	
   }
 
   .texteditor .ql-toolbar.ql-snow {
