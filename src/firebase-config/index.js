@@ -9,7 +9,6 @@ import {
   getDocs,
   setDoc,
   serverTimestamp,
-  arrayUnion,
   runTransaction,
 } from "firebase/firestore";
 
@@ -239,7 +238,10 @@ export const addCollabMail = async (postId, newMail) => {
       
       if (postDoc.exists()) {
         const existingData = postDoc.data();
+
+        // array to store existing or new mails
         const collabMails = existingData.collabMails || [];
+
         //check if mail is already invited or not
         if(collabMails.includes(newMail)){
           console.log("Mail already invited");
@@ -264,25 +266,20 @@ export const addCollabMail = async (postId, newMail) => {
 
 export const collabInvites= async (userId)=>{
   try{
-    const user = auth.currentUser;
-    if (!user) {
-      throw new Error("User not authenticated.");
-    }
-    // post db 
+    // post db reference
     const getRef = collection(db, "posts");
     const getDoc = await getDocs(getRef);
-    //user db
+    //user db reference
     const postRef = doc(db,"users",userId);
 
     await runTransaction(db, async (transaction) => {
       const postDoc = await transaction.get(postRef);
       if(postDoc.exists()){
         const email=postDoc.data().email;
-        const collabDocs= postDoc.data().collabDocs || [];
-        
+        const collabDocs= postDoc.data().collabDocs || []; // collab doc array   
         
         for (const doc of getDoc.docs) {
-          const collabMails = doc.data().collabMails || [];
+          const collabMails = doc.data().collabMails || []; // collab mail array
           // Check if the document is already in collabDocs
           if (collabDocs.includes(doc.id)) {
            console.log("Document already exists in collabDocs. Exiting.");
@@ -316,3 +313,70 @@ export const collabInvites= async (userId)=>{
     throw error;
   }
 }
+
+
+// get invites docs
+
+export const getInvites = async (userId) => {
+  try{
+    //all posts collections reference
+    const getRef = collection(db, "posts");
+    const getSnapshot = await getDocs(getRef);
+    
+    //current user's user collection reference
+    const postRef = doc(db, "users", userId);
+    const postDoc = await getDoc(postRef);
+
+    //getting my mail from user doc
+    const mail=postDoc.data().email;
+    console.log(mail);
+
+    // converting the query Snapshot of posts collections to an array
+    const dataArray = getSnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    // collab docs array
+    const docs=[]; 
+
+    // iterating through the query Array
+    for(let i=0; i<dataArray.length; i++){
+      const doc = dataArray[i];
+
+      // if collabMails exists
+      if(doc.collabMails){ 
+        console.log(Object.entries(doc.collabMails));
+        if(Object.values(doc.collabMails).includes(mail)){ // checking the collabMails object through an array
+          //console.log(doc);
+          docs.push(doc)
+        }
+      }
+    }
+    return docs;
+  }catch (error) {
+    console.error("Error getting collab docs: ", error);
+    throw error;
+  }
+}
+
+export const collabEdit = async (postId, updatedData) => {
+  try {
+    // const user = auth.currentUser;
+    // if (!user) {
+    //   throw new Error("User not authenticated.");
+    // }
+
+    // const postRef = doc(db, "posts", postId);
+    // const postDoc = await getDoc(postRef);
+
+    // if (postDoc.exists() && postDoc.data().author.userId === user.uid) {
+    //   await updateDoc(postRef, updatedData);
+    //   console.log("Post updated successfully.");
+    // } else {
+    //   console.error("Unauthorized to edit this post.");
+    // }
+  } catch (error) {
+    console.error("Error editing collab post", error);
+    throw error;
+  }
+};
