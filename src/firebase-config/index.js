@@ -10,6 +10,7 @@ import {
   setDoc,
   serverTimestamp,
   runTransaction,
+  onSnapshot,
 } from "firebase/firestore";
 
 
@@ -345,7 +346,7 @@ export const getInvites = async (userId) => {
 
       // if collabMails exists
       if(doc.collabMails){ 
-        console.log(Object.entries(doc.collabMails));
+        // console.log(Object.entries(doc.collabMails));
         if(Object.values(doc.collabMails).includes(mail)){ // checking the collabMails object through an array
           //console.log(doc);
           docs.push(doc)
@@ -361,22 +362,53 @@ export const getInvites = async (userId) => {
 
 export const collabEdit = async (postId, updatedData) => {
   try {
-    // const user = auth.currentUser;
-    // if (!user) {
-    //   throw new Error("User not authenticated.");
-    // }
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("User not authenticated.");
+    }
 
-    // const postRef = doc(db, "posts", postId);
-    // const postDoc = await getDoc(postRef);
+    const postRef = doc(db, "posts", postId);
+    const postDoc = await getDoc(postRef);
 
-    // if (postDoc.exists() && postDoc.data().author.userId === user.uid) {
-    //   await updateDoc(postRef, updatedData);
-    //   console.log("Post updated successfully.");
-    // } else {
-    //   console.error("Unauthorized to edit this post.");
-    // }
+     //current user's user collection reference
+     const getRef = doc(db, "users", user.id);
+     const getSnapshot = await getDoc(getRef);
+ 
+     //getting my mail from user doc
+     const mail=getSnapshot.data().email;
+     console.log(mail);
+     
+    if (postDoc.exists() && Object.values(postDoc.data().collabMails).includes(mail)) {
+      await updateDoc(postRef, updatedData);
+      console.log("Post updated successfully.");
+       // Implementing real-time updates
+       onSnapshot(postRef, (snapshot) => {
+        // The snapshot will contain the updated data
+        const updatedPostData = snapshot.data().content;
+        // this updated data to reflect changes on the screen
+        console.log("Real-time update:", updatedPostData);
+      });
+    } else {
+      console.error("Unauthorized to edit this post.");
+    }
   } catch (error) {
     console.error("Error editing collab post", error);
     throw error;
   }
 };
+const snapshotToArray = snapshot => Object.entries(snapshot).filter(data=>data[0]==="collabDocs");
+export const matchCollabDoc =async (userId)=>{
+  try{
+  
+    const docRef = doc(db, "users", userId);
+    const docSnap = await getDoc(docRef);
+    // console.log(docSnap.val());
+    const arr=snapshotToArray(docSnap.data());
+    console.log(arr[0][1]);
+    // console.log(typeof Object.entries(docSnap.data().collabDocs));
+    return arr[0][1];
+  }catch (error) {
+    console.error("Error matching collab doc id", error);
+    throw error;
+  }
+}
