@@ -25,13 +25,13 @@ import ArticlePage from "views/admin/article";
 import Setting from "views/admin/setting/Setting";
 
 const routes = [
-  {
-    name: "Home",
-    layout: "/admin",
-    path: "default",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <MainDashboard />,
-  },
+  // {
+  //   name: "Home",
+  //   layout: "/admin",
+  //   path: "default",
+  //   icon: <MdHome className="h-6 w-6" />,
+  //   component: <MainDashboard />,
+  // },
   {
     name: "Articles Feed",
     layout: "/admin",
